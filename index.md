@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+    <meta name="HandheldFriendly" content="true">
+    
+<link href="css/dailyworkwiths.css" rel="stylesheet">
+
+<body onload="init();app.getRows();">
+    <p class="head"> The daily list of work and work-withs.        
+    </p>
+    <div class="widgetDiv">
+        <div class="fdiv">
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Name" /><br>
+               <!-- <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="Phone" /><br>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" /><br>
+               -->
+                <label for="topic">Topic</label>
+                <textarea id="topic" rows="3" placeholder="Topic"></textarea><br>
+                <label for="week">Week</label>
+                <input type="week" id="week" onchange="app.showWeek();"></input><br>
+                <label for="search">Search</label>
+                <input type="text" id="search" onkeyup="app.searchMe();" placeholder="Buscar" /><br>
+                <input type="reset" id="reset" />
+                <input type="submit" id="submit" value="Submit" onclick="app.addRecord();" />
+                <input type="button" id="export" onclick="app.handleExport();" value="Export"/>
+                <br>
+            </form>
+        </div>
+        <div class="fdiv">
+            <label for="myUL">Listing...</label>
+            <ul id="myUL" >
+            </ul>
+        </div>        
+    </div>
+    <div id="msg"></div>
+    <!--
+    <label for="searchUL">Search Listing...</label>
+        <ul id="searchUL"></ul>  -->
+    <script src="js/pouchdb.min.js" type="text/javascript" ></script> 
+    <script src="js/pouchdb.find2.js" type="text/javascript" ></script>     
+    <script src="js/dailyworkwiths.js" type="text/javascript" ></script>
+</body>
+
+</html>
