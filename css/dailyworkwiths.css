@@ -1,1 +1,122 @@
+body { 
+  font-family: Sans-Serif;
+  font-size: 20px;
+}
+p.head {
+  font-size: 1.4rem;
+  text-align: center; 
+}
+label {  
+  display: inline-block;
+  width: 20%;
+}
+input[type=text], input[type=tel], input[type=email], input[type=week], textarea  {
+  width: 95%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+}
+input[type=text]:focus, input[type=tel]:focus, input[type=email]:focus {
+  width: 95%;
+  /*font-size: 16px;*/
+  background-color: rgb(218,245,245);
+}
+input[type=search] {
+  width: 95%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+input[type=search]:focus {
+  background-color: white;
+  background-image: url('images/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+input[type=reset],input[type=submit],input[type=button], select {
+  width: 30%; 
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.fdiv {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  float: left;
+  width: 95%;
+  height: 325px;
+}
+.widgetDiv:after {
+  display: table;
+  clear: both; 
+  flex: 0 1 auto; 
+}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 550px) {
+.fdiv {
+    width: 90%;
+  }
+} 
+@media (min-width: 640px) { body { font-size: 1.2rem;} } 
+@media (min-width: 960px) { body { font-size: 1.4rem;} }
+@media (min-width: 1100px) { body { font-size: 1.6rem;} }
+
+/*
+.widgetDiv:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
+ul {
+  /* Remove default list styling */
+  list-style-type: none;  
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  /* border: 1px solid #ddd; Add a border to all links */
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  /*font-size: 12px;*/ /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+ul li:hover:not(.header) {
+  background-color: #ccc; /* Add a hover effect to all links, except for headers */
+}
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
 
