@@ -12,21 +12,23 @@
         <div class="fdiv">
             <form>
                 <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Name" ></input><br>
+                <input type="text" id="name" placeholder="Name" /><br>
                <!-- <label for="phone">Phone</label>
-                <input type="tel" id="phone" placeholder="Phone" ></input><br>
+                <input type="tel" id="phone" placeholder="Phone" /><br>
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Email" ></input><br>
+                <input type="email" id="email" placeholder="Email" /><br>
                -->
                 <label for="topic">Topic</label>
                 <textarea id="topic" rows="3" placeholder="Topic"></textarea><br>
                 <label for="week">Week</label>
-                <input type="week" id="week" onchange="app.showWeek();"></input><br>
+                <input type="week" id="week" onchange="app.showWeek();" />
+                <br>
                 <label for="search">Search</label>
-                <input type="text" id="search" onkeyup="app.searchMe();" placeholder="Buscar" ></input><br>
-                <input type="reset" id="reset" ></input>
-                <input type="submit" id="submit" value="Submit" onclick="app.addRecord();" ></input>
-                <input type="button" id="export" onclick="app.handleExport();" value="Export"></input>
+                <input type="text" id="search" onkeyup="app.searchMe();" placeholder="Buscar" />
+                <br>
+                <input type="reset" id="reset" />
+                <input type="submit" id="submit" value="Submit" onclick="app.addRecord();" />
+                <input type="button" id="export" onclick="app.handleExport();" value="Export" />
                 <br>
             </form>
         </div>
