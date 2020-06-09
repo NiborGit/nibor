@@ -20,7 +20,25 @@ for (j = 0; j < rListItem.length; j++) {
     parent.removeChild(ev.target);
   }, false);
 };
-
+var rItems = document.querySelectorAll('li');
+for (j = 0; j < rItems.length; j++) {
+rItems[j].addEventListener('touchstart', function (ev) {
+    // Use the event's data to call out to the appropriate gesture handlers
+  switch (ev.touches.length) {
+    case 1: break;
+    case 2: 
+		var o = ev.target;
+    		var parent = ev.target.parentElement;
+    		var r = o.getAttribute('data-id');
+                  app.removeRow(r);
+                  parent.removeChild(ev.target);
+		  break;
+    case 3: break;
+    default: break;
+  }
+    
+  }, false);
+};	
 
 var app = {  
 getDbInfo: function(){
