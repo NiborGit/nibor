@@ -108,7 +108,7 @@ ul li.checked {
 }
 /* Add a "checked" mark when clicked on */
 ul li.checked::before {
-  content: '';
+  content: 'x';
   position: absolute;
   border-color: #fff;
   border-style: solid;
