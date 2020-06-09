@@ -59,14 +59,14 @@ input[type=reset],input[type=submit],input[type=button], select {
   background-color: #f2f2f2;
   padding: 20px;
   float: left;
-  width: 95%;
+  width: 100%;
   height: 325px;
   display: table;
 }
-.widgetDiv:after {
-  display: table;
-  clear: both; 
-  flex: 0 1 auto; 
+.widgetDiv {
+  margin: auto;
+  width: 95%;  
+  padding: 1px;  
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 550px) {
