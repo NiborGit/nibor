@@ -97,6 +97,12 @@ ul li {
   /*font-size: 12px;*/ /* Increase the font-size */
   color: black; /* Add a black text color */
   display: block; /* Make it into a block element to fill the whole list */
+  
+    /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 ul li:hover:not(.header) {
   background-color: #ccc; /* Add a hover effect to all links, except for headers */
