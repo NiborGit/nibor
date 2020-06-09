@@ -21,16 +21,6 @@ for (j = 0; j < rListItem.length; j++) {
   }, false);
 };
 
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-   close[i].onclick = function() {
-    var parent = this.parentElement;
-    var r = this.getAttribute('data-id');
-    app.removeRow(r);
-    parent.removeChild(ev.target);
-  }
-};
 
 var app = {  
 getDbInfo: function(){
@@ -87,12 +77,7 @@ addRecord: function (){
     var li = document.createElement("li");    
     var t = document.createTextNode(row);
     li.setAttribute('data-id',todo._id)
-    li.appendChild(t);
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);	
+    li.appendChild(t);    
   if (row === '  ') {
     alert("You must write something!");
   } else {
