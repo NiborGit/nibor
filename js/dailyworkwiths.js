@@ -6,6 +6,13 @@ for (i = 0; i < list.length; i++) {
   list[i].addEventListener('click', function (ev) {
     if (ev.target.tagName === 'LI') {     
       ev.target.classList.toggle('checked');
+    } else if (ev.target.className === 'close'){ 
+      var o = ev.target;      
+      var parent = ev.target.parentElement;
+      var uParent = parent.parentElement;
+      var r = parent.getAttribute('data-id'); 
+      app.removeRow(r);
+      uParent.removeChild(parent);           
     }
   }, false);
 };
@@ -20,6 +27,7 @@ for (j = 0; j < rListItem.length; j++) {
     parent.removeChild(ev.target);
   }, false);
 };
+
 
 var app = {  
 getDbInfo: function(){
@@ -66,7 +74,6 @@ addRecord: function (){
     }).catch(function (err) {
       console.log(err);
     });      
-
     var row = todo.name 
             // + ' ' + p.value 
             // + ' '  + e.value 
@@ -91,12 +98,15 @@ getRows: function(){
           var li = document.createElement("li");    
           var t = document.createTextNode(ent.name 
             + ' ' + ent.topic
-            + ' ' + ent.week ) ;          
+            + ' ' + ent.week ) ;                   
           li.setAttribute('data-id',ent._id)
           li.appendChild(t);
-          document.getElementById("myUL").appendChild(li)  
+          li.i
+          console.log(li.innerHTML) ;
+          li.innerHTML += "<span class='close'>\u00D7</span>" ;
+          document.getElementById("myUL").appendChild(li);            
         }); 
-    });    
+    });          
 },
 removeRow: function(id){
   //var id = 
@@ -160,8 +170,3 @@ function init(){
     db = new PouchDB('dailyworkwiths');
     //app.createPouch();  
 }
-
-
-
-
-
