@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+    <meta name="HandheldFriendly" content="true">
+<style>
+* { 
+	font-family: Sans-Serif;
+    font-size: 16px;
+}
+p.head {  
+  text-align: center;
+  font-size: 1.2rem;
+}
+input[type=text] {
+  width: 85%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+}
+input[type=text]:focus {
+  width: 85%;  
+  background-color: rgb(245,245,215);
+}
+input[type=search] {
+  width: 85%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+input[type=search]:focus {
+  background-color: rgb(245,245,215);
+  /*background-image: url('images/searchicon.png');  */
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+}
+input[type=reset],input[type=button], select {
+  width: 30%;
+  font-size: .95rem;
+  padding: 3px 5px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+div.fdiv {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #cccccc;
+  padding: 2px;
+}
+.grid-item {
+  background-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.grid-item:hover {
+  background-color: rgb(245,245,215);  
+}
+
+</style>
+<script>
+    function clearAll(){
+        document.getElementById("myULbooks").innerHTML = '';
+        document.getElementById("myULchapters").innerHTML = '';
+        document.getElementById("myULverses").innerHTML = '';
+        document.getElementById("search").value = '';
+        document.getElementById("header").innerHTML = 'Bi';
+    }
+    function showBooks(){
+        document.getElementById("myULbooks").innerHTML = '';
+        document.getElementById("myULchapters").innerHTML = '';
+        document.getElementById("myULverses").innerHTML = '';
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            document.getElementById("myULbooks").innerHTML = '';
+            myObj.forEach(function(doc) {
+                var d = doc;
+                var li = document.createElement("div");    
+                var t = document.createTextNode(d.ShortName) ;                 
+                li.className = "grid-item" ;
+                li.appendChild(t);
+                document.getElementById("myULbooks").appendChild(li);
+            });
+           }
+        };
+      xmlhttp.open("GET", "/Json/BiNTBooks.json", true);
+      xmlhttp.send();
+    }
+    function showChapters(){          
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            var obj = document.getElementById("bShortName");
+            var ch = obj.value;            
+            document.getElementById("myULbooks").innerHTML = '';
+            myObj.forEach(function(doc) {
+                var d = doc;                                     
+                if( ch === d.ShortName) {                     
+                var li = document.createElement("div");                  
+                var t = document.createTextNode(d.chapter) ;
+                li.className = "grid-item" ;
+                li.appendChild(t);
+                document.getElementById("myULchapters").appendChild(li);
+                }
+            });
+           }
+        };
+      xmlhttp.open("GET", "/Json/BiNTChapters.json", true);
+      xmlhttp.send();
+    }   
+    function showText(){          
+        var xmlhttp = new XMLHttpRequest();        
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);            
+            var cobj = document.getElementById("bChapter");
+            var chap = cobj.value; 
+            var el = document.getElementById("bShortName");
+            var bsn = el.value;           
+            document.getElementById("myULchapters").innerHTML = '';
+            myObj.forEach(function(doc) {
+                var d = doc;                                     
+                if( chap === d.orig_chapter && bsn == d.ShortName) {                     
+                var li = document.createElement("div");                  
+                var t = document.createTextNode(d.orig_chapter
+                + ':' + d.orig_verse
+                + ' ' + d.text) ;
+               //li.className = "grid-item" ;
+                li.appendChild(t);
+                document.getElementById("myULverses").appendChild(li);
+                }
+            });
+           }
+        };
+      xmlhttp.open("GET", "/Json/BiNT.json", true);
+      xmlhttp.send();
+    }
+function searchMe() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('search');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById('myULverses');
+  li = ul.getElementsByTagName('div');
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {    
+    txtValue = li[i].textContent || li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}        
+</script>
+<body>
+<p class="head" id="header"> Bi
+</p>
+<div class="fdiv">
+<form>
+<input type="search" id="search" onkeyup="searchMe();" placeholder="Search chapter"/><br>
+<input type="hidden" id="bShortName" value="" />
+<input type="hidden" id="bChapter" value="" />
+<input type="button" id="reset"  value="Clear" onclick="clearAll()"/>
+<input type="button" id="submit" value="Books" onclick="showBooks();"/><br>
+</form>
+</div>
+<div id="myULbooks" class="grid-container">
+</div>      
+<div id="myULchapters" class="grid-container">
+</div>   
+<div id="myULverses" >
+    </div>        
+<div id="demo"></div>
+<script>  
+var list = document.querySelector('div#myULbooks');
+list.addEventListener('click', function(ev) {       
+  if (ev.target.tagName === 'DIV') {
+    //alert(ev.target.className);
+    var obj = document.getElementById("bShortName");
+    obj.value = ev.target.innerHTML; 
+    document.getElementById("header").innerHTML = obj.value;
+    showChapters();     
+   }      
+}, false);
+
+var clist = document.querySelector('div#myULchapters');
+clist.addEventListener('click', function(ev) {       
+  if (ev.target.tagName === 'DIV') {
+    //alert(ev.target.className);
+    var obj = document.getElementById("bChapter");
+    obj.value = ev.target.innerHTML; 
+    showText();     
+   }      
+}, false);
+
+</script>
+</body>
+</html>
