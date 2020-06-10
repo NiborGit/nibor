@@ -1,0 +1,136 @@
+[{
+    "BookKey": "40N",
+    "BookName": "Matthew",
+    "ShortName": "Ma"
+},
+{
+    "BookKey": "41N",
+    "BookName": "Mark",
+    "ShortName": "Mr"
+},
+{
+    "BookKey": "42N",
+    "BookName": "Luke",
+    "ShortName": "Lk"
+},
+{
+    "BookKey": "43N",
+    "BookName": "John",
+    "ShortName": "Jn"
+},
+{
+    "BookKey": "44N",
+    "BookName": "Acts of the Apostles",
+    "ShortName": "Ac"
+},
+{
+    "BookKey": "45N",
+    "BookName": "Romans",
+    "ShortName": "Ro"
+},
+{
+    "BookKey": "46N",
+    "BookName": "1 Corinthians",
+    "ShortName": "1Cor"
+},
+{
+    "BookKey": "47N",
+    "BookName": "2 Corinthians",
+    "ShortName": "2Cor"
+},
+{
+    "BookKey": "48N",
+    "BookName": "Galatians",
+    "ShortName": "Ga"
+},
+{
+    "BookKey": "49N",
+    "BookName": "Ephesians",
+    "ShortName": "Eph"
+},
+{
+    "BookKey": "50N",
+    "BookName": "Philippians",
+    "ShortName": "Phil"
+},
+{
+    "BookKey": "51N",
+    "BookName": "Colossians",
+    "ShortName": "Col"
+},
+{
+    "BookKey": "52N",
+    "BookName": "1 Thessalonians",
+    "ShortName": "1Th"
+},
+{
+    "BookKey": "53N",
+    "BookName": "2 Thessalonians",
+    "ShortName": "2Th"
+},
+{
+    "BookKey": "54N",
+    "BookName": "1 Timothy",
+    "ShortName": "1Tim"
+},
+{
+    "BookKey": "55N",
+    "BookName": "2 Timothy",
+    "ShortName": "2Tim"
+},
+{
+    "BookKey": "56N",
+    "BookName": "Titus",
+    "ShortName": "Ti"
+},
+{
+    "BookKey": "57N",
+    "BookName": "Philemon",
+    "ShortName": "Phe"
+},
+{
+    "BookKey": "58N",
+    "BookName": "Hebrews",
+    "ShortName": "He"
+},
+{
+    "BookKey": "59N",
+    "BookName": "James",
+    "ShortName": "Ja"
+},
+{
+    "BookKey": "60N",
+    "BookName": "1 Peter",
+    "ShortName": "1Pet"
+},
+{
+    "BookKey": "61N",
+    "BookName": "2 Peter",
+    "ShortName": "2Pet"
+},
+{
+    "BookKey": "62N",
+    "BookName": "1 John",
+    "ShortName": "1Jn"
+},
+{
+    "BookKey": "63N",
+    "BookName": "2 John",
+    "ShortName": "2Jn"
+},
+{
+    "BookKey": "64N",
+    "BookName": "3 John",
+    "ShortName": "3Jn"
+},
+{
+    "BookKey": "65N",
+    "BookName": "Jude",
+    "ShortName": "Ju"
+},
+{
+    "BookKey": "66N",
+    "BookName": "Revelation",
+    "ShortName": "Re"
+}
+]
