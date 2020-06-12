@@ -1,12 +1,12 @@
 [{
     "BookKey": "40N",
     "BookName": "Matthew",
-    "ShortName": "Ma"
+    "ShortName": "Mt"
 },
 {
     "BookKey": "41N",
     "BookName": "Mark",
-    "ShortName": "Mr"
+    "ShortName": "Mk"
 },
 {
     "BookKey": "42N",
@@ -31,12 +31,12 @@
 {
     "BookKey": "46N",
     "BookName": "1 Corinthians",
-    "ShortName": "1Cor"
+    "ShortName": "1Cr"
 },
 {
     "BookKey": "47N",
     "BookName": "2 Corinthians",
-    "ShortName": "2Cor"
+    "ShortName": "2Cr"
 },
 {
     "BookKey": "48N",
@@ -51,12 +51,12 @@
 {
     "BookKey": "50N",
     "BookName": "Philippians",
-    "ShortName": "Phil"
+    "ShortName": "Phi"
 },
 {
     "BookKey": "51N",
     "BookName": "Colossians",
-    "ShortName": "Col"
+    "ShortName": "Cl"
 },
 {
     "BookKey": "52N",
@@ -71,12 +71,12 @@
 {
     "BookKey": "54N",
     "BookName": "1 Timothy",
-    "ShortName": "1Tim"
+    "ShortName": "1Tm"
 },
 {
     "BookKey": "55N",
     "BookName": "2 Timothy",
-    "ShortName": "2Tim"
+    "ShortName": "2Tm"
 },
 {
     "BookKey": "56N",
@@ -101,12 +101,12 @@
 {
     "BookKey": "60N",
     "BookName": "1 Peter",
-    "ShortName": "1Pet"
+    "ShortName": "1Pt"
 },
 {
     "BookKey": "61N",
     "BookName": "2 Peter",
-    "ShortName": "2Pet"
+    "ShortName": "2Pt"
 },
 {
     "BookKey": "62N",
