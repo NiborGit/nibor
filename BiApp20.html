@@ -35,7 +35,7 @@ function prevIndex(){
   for(var i=0; i < objChap.length; i++){
     var ent = objChap[i];
     var tmpIndex = currIndex;
-    if(i == tmpIndex -1 && i > 0){
+    if(i == tmpIndex -1 && i > -1){
       document.getElementById("bChapter").value = ent.chapter;      
       document.getElementById("bShortName").value = ent.ShortName;             
       showText();      
