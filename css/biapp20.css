@@ -1,0 +1,9 @@
+#copyright:before {content: '\00A9'; }
+#myBar a {
+   text-decoration: none;   
+}
+#navMsg, #pBtn, #nBtn {  
+  display: inline-block;
+  text-align: center; 
+  width: 32%; 
+}
