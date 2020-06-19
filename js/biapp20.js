@@ -92,7 +92,7 @@ function getChapters(){
             console.log("chap loaded")
             }
           }; 
-      xmlhttp.open("GET", "/JsonObjects/data/BiNTChapters.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNTChapters.json", true);
       xmlhttp.send();
 } 
     function clearAll(){
@@ -123,7 +123,7 @@ function getChapters(){
             });
            }
         };
-      xmlhttp.open("GET", "/JsonObjects/data/BiNTBooks.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNTBooks.json", true);
       xmlhttp.send();
     }
     function showChapters(){          
@@ -200,7 +200,7 @@ function getChapters(){
             });
            }
         };
-      xmlhttp.open("GET", "/JsonObjects/data/BiNTNasb.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNTNasb.json", true);
       xmlhttp.send();
     }    
 function searchMe() {
