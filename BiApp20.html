@@ -174,7 +174,13 @@ function searchMe() {
 </div> 
 
 <form class="w3-container">
-<input class="w3-input" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/>
+  <div class="w3-row w3-section">          
+      <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-filter"></i></div>
+      <div class="w3-rest">
+          <input class="w3-input" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/>           
+      </div>      
+  </div>
+
 <input type="hidden" id="bShortName" value="" />
 <input type="hidden" id="bChapter" value="" />
 </form> 
