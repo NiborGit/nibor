@@ -87,7 +87,7 @@ function getChapters(){
                 var d = doc;
                 var li = document.createElement("div");    
                 var t = document.createTextNode(d.ShortName) ;                 
-                li.className = "w3-col s4 w3-card w3-center w3-xxlarge w3-hover-white" ;
+                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
                 li.appendChild(t);
                 document.getElementById("myULbooks").appendChild(li);
             });
@@ -105,7 +105,7 @@ function getChapters(){
                 if( ch === d.ShortName) {                     
                 var li = document.createElement("div");                  
                 var t = document.createTextNode(d.chapter) ;                
-                li.className = "w3-col s4 w3-card w3-center w3-xxlarge w3-hover-white" ;
+                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
                 li.appendChild(t);
                 document.getElementById("myULchapters").appendChild(li);
                 }
@@ -179,14 +179,14 @@ function searchMe() {
 <input type="hidden" id="bChapter" value="" />
 </form> 
 
-<div class="w3-row w3-theme-l2" id="myULbooks"></div> 
-<div class="w3-row w3-theme-l1" id="myULchapters"></div> 
+<div class="w3-row w3-theme" id="myULbooks"></div> 
+<div class="w3-row w3-theme" id="myULchapters"></div> 
 <div class="w3-bar w3-theme-dark w3-xlarge" id="myBar">
       <div class="w3-button w3-left w3-xlarge" id="pBtn" onclick="prevIndex();">&laquo;</div> 
       <div class="w3-button w3-xlarge" id="navMsg"></div>    
       <div class="w3-button w3-right w3-xlarge" id="nBtn" onclick="nextIndex()">&raquo;</div>
       </div>
-<div class="w3-row-padding w3-large" id="myULverses" >
+<div class="w3-row-padding w3-theme w3-large" id="myULverses" >
 </div>
 <footer class="w3-theme w3-margin-top">
   <h5><span id="copyright"></span>&nbsp;Niborgit@gmail.com</h5>
