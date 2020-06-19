@@ -5,224 +5,45 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-#copyright:before {content: '\00A9'; }
-#myBar a {
-   text-decoration: none;   
-}
-#navMsg, #pBtn, #nBtn {  
-  display: inline-block;
-  text-align: center; 
-  width: 32%; 
-}
-</style>
-<script>
-var currIndex;
-var objChap;
-function setIndex(book, chap){
-  var b = book;
-  var c = chap;
-  for(var i=0; i < objChap.length; i++){
-    var ent = objChap[i];
-    if(ent.ShortName == b && ent.chapter == c){
-      currIndex = i; 
-      document.getElementById("navMsg").innerHTML = ent.chapter; 
-      document.getElementById("header").innerHTML = ent.ShortName;
-    }
-  }
-}
-function prevIndex(){
-  for(var i=0; i < objChap.length; i++){
-    var ent = objChap[i];
-    var tmpIndex = currIndex;
-    if(tmpIndex == 0){ tmpIndex =1;} 
-    if(i == tmpIndex -1 && i > 0 ){
-      document.getElementById("bChapter").value = ent.chapter;      
-      document.getElementById("bShortName").value = ent.ShortName;             
-      showText();      
-    }
-  }  
-}
-function nextIndex(){
-  for(var i=0; i < objChap.length; i++){
-    var ent = objChap[i];
-    var tmpIndex = currIndex;;
-    if(i == tmpIndex +1  && i < 261 ){
-      document.getElementById("bChapter").value = ent.chapter;      
-      document.getElementById("bShortName").value = ent.ShortName;             
-      showText();      
-    }
-  }  
-}
-function getChapters(){          
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            objChap = JSON.parse(this.responseText);
-            console.log("chap loaded")
-            }
-          }; 
-      xmlhttp.open("GET", "/nibor/Json/BiNTChapters.json", true);
-      xmlhttp.send();
-} 
-    function clearAll(){
-        document.getElementById("myULbooks").innerHTML = '';
-        document.getElementById("myULchapters").innerHTML = '';
-        document.getElementById("myULverses").innerHTML = '';
-        document.getElementById("myBar").style.display = 'none';
-        document.getElementById("search").value = '';
-        document.getElementById("header").innerHTML = 'Bi';
-    }
-    function showBooks(){
-        document.getElementById("myULbooks").innerHTML = '';
-        document.getElementById("myULchapters").innerHTML = '';
-        document.getElementById("myULverses").innerHTML = '';
-        document.getElementById("myBar").style.display = 'none';
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);
-            document.getElementById("myULbooks").innerHTML = '';
-            myObj.forEach(function(doc) {
-                var d = doc;
-                var li = document.createElement("div");    
-                var t = document.createTextNode(d.ShortName) ;                 
-                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
-                li.appendChild(t);
-                document.getElementById("myULbooks").appendChild(li);
-            });
-           }
-        };
-      xmlhttp.open("GET", "/nibor/Json/BiNTBooks.json", true);
-      xmlhttp.send();
-    }
-    function showChapters(){          
-            var obj = document.getElementById("bShortName");
-            var ch = obj.value;            
-            document.getElementById("myULbooks").innerHTML = '';
-            objChap.forEach(function(doc, z) {
-                var d = doc;                                     
-                if( ch === d.ShortName) {                     
-                var li = document.createElement("div");                  
-                var t = document.createTextNode(d.chapter) ;                
-                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
-                li.appendChild(t);
-                document.getElementById("myULchapters").appendChild(li);
-                }
-            });
-    }   
-    
-    function showText(){ 
-        document.getElementById("myULverses").innerHTML = '';              
-        var xmlhttp = new XMLHttpRequest();        
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);            
-            var cobj = document.getElementById("bChapter");
-            var chap = cobj.value; 
-            var el = document.getElementById("bShortName");
-            var bsn = el.value;           
-            document.getElementById("myULchapters").innerHTML = '';
-            myObj.forEach(function(doc) {
-                var d = doc;                                     
-                if( chap == d.orig_chapter && bsn == d.ShortName) {                                     
-                var li = document.createElement("div");                  
-                var t = document.createTextNode(d.orig_chapter
-                + ':' + d.orig_verse
-                + ' ' + d.text) ;
-               //li.className = "grid-item" ;
-                li.appendChild(t);
-                document.getElementById("myULverses").appendChild(li);
-                setIndex(bsn, chap);
-                }
-            });
-           }
-        };
-      xmlhttp.open("GET", "/nibor/Json/BiNTNasb.json", true);
-      xmlhttp.send();
-    }
-function searchMe() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('search');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById('myULverses');
-  li = ul.getElementsByTagName('div');
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {    
-    txtValue = li[i].textContent || li[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}        
-</script>
+<link rel="stylesheet" href="/nibor/css/biapp20.css">
 <body>
 <div class="w3-bar w3-theme">
-  <a href="https://niborgit.github.io/nibor/BiApp20.html" class="w3-bar-item w3-button w3-xlarge w3-green">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green">
       <i class="fa fa-home"></i></a>
-  <!--<a href="#" class="w3-bar-item w3-button  w3-xlarge">
-      <i class="fa fa-search"></i></a> -->
-  <a href="#" class="w3-bar-item w3-button  w3-xlarge" onclick="showBooks()">
+  <a href="#" class="w3-bar-item w3-button  w3-xlarge" onclick="showSearch()">
+      <i class="fa fa-search"></i></a> 
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showBooks()">
       <i class="fa fa-book"></i></a>
-  <a href="#" class="w3-bar-item w3-button  w3-xlarge" onclick="clearAll()">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="clearAll()">
     <i class="fa fa-eraser"></i></a>       
-  <a href="#" class="w3-bar-item w3-button  w3-xlarge" id="header">
+    <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showFilter()">
+        <i class="fa fa-filter"></i></a>         
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" id="header">
         <i>Bi</i></a>         
 </div> 
 
-<form class="w3-container">
-  <div class="w3-row w3-section">          
-      <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-filter"></i></div>
-      <div class="w3-rest">
-          <input class="w3-input" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/>           
-      </div>      
-  </div>
-
+<div class="w3-container w3-theme w3-hide" id="fmFilter">
+<input class="w3-input w3-theme" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/> 
 <input type="hidden" id="bShortName" value="" />
 <input type="hidden" id="bChapter" value="" />
-</form> 
-
+</div>
+<div class="w3-container w3-theme w3-hide" id="fmSearch">
+<input class="w3-input w3-theme" type="text" id="searchAll" placeholder="Search..."/>           
+</div> 
 <div class="w3-row w3-theme" id="myULbooks"></div> 
 <div class="w3-row w3-theme" id="myULchapters"></div> 
 <div class="w3-bar w3-theme-dark w3-xlarge" id="myBar">
-      <div class="w3-button w3-left w3-xlarge" id="pBtn" onclick="prevIndex();">&laquo;</div> 
-      <div class="w3-button w3-xlarge" id="navMsg"></div>    
-      <div class="w3-button w3-right w3-xlarge" id="nBtn" onclick="nextIndex()">&raquo;</div>
-      </div>
-<div class="w3-row-padding w3-theme w3-large" id="myULverses" >
+      <div class="w3-bar-item w3-button w3-left w3-xlarge" id="pBtn" onclick="prevIndex();">&laquo;</div> 
+      <div class="w3-bar-item w3-button w3-xlarge" id="navMsg"></div>    
+      <div class="w3-bar-item w3-button w3-right w3-xlarge" id="nBtn" onclick="nextIndex()">&raquo;</div>
+</div>
+<div class="w3-row-padding w3-large w3-theme" id="myULverses" >
 </div>
 <footer class="w3-theme w3-margin-top">
   <h5><span id="copyright"></span>&nbsp;Niborgit@gmail.com</h5>
 </footer>
-<script>  
-showBooks();
-getChapters();
-        var list = document.querySelector('div#myULbooks');
-        list.addEventListener('click', function(ev) {       
-          if (ev.target.tagName === 'DIV') {
-            //alert(ev.target.className);
-            var obj = document.getElementById("bShortName");
-            obj.value = ev.target.innerHTML; 
-            document.getElementById("header").innerHTML = obj.value;
-            showChapters();     
-           }      
-        }, false);
-        
-        var clist = document.querySelector('div#myULchapters');
-        clist.addEventListener('click', function(ev) {       
-          if (ev.target.tagName === 'DIV') {
-            //alert(ev.target.className);
-            var obj = document.getElementById("bChapter");
-            obj.value = ev.target.innerHTML; 
-            document.getElementById("myBar").style.display = '';             
-            showText();     
-           }      
-        }, false);
-        
-        </script>
+
+<script src="/nibor/js/biapp20.js"></script>        
 </body>
 
 </html>
