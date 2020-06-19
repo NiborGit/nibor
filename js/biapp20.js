@@ -117,7 +117,7 @@ function getChapters(){
                 var d = doc;
                 var li = document.createElement("div");    
                 var t = document.createTextNode(d.ShortName) ;                 
-                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+                li.className = "w3-col s4 w3-center w3-large w3-hover-white" ;
                 li.appendChild(t);
                 document.getElementById("myULbooks").appendChild(li);
             });
@@ -135,7 +135,7 @@ function getChapters(){
                 if( ch === d.ShortName) {                     
                 var li = document.createElement("div");                  
                 var t = document.createTextNode(d.chapter) ;                
-                li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+                li.className = "w3-col s4 w3-center w3-large w3-hover-white" ;
                 li.appendChild(t);
                 document.getElementById("myULchapters").appendChild(li);
                 }
