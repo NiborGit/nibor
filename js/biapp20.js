@@ -76,7 +76,7 @@ function prevIndex(){
 function nextIndex(){
   for(var i=0; i < objChap.length; i++){
     var ent = objChap[i];
-    var tmpIndex = currIndex;;
+    var tmpIndex = currIndex;
     if(i == tmpIndex +1  && i < 261 ){
       document.getElementById("bChapter").value = ent.chapter;      
       document.getElementById("bShortName").value = ent.ShortName;             
