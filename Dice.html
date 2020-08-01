@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Area List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>
+<script>
+var areas = [{"name":"\u2680","id":"1"},{"name":"\u2681","id":"2"},{"name":"\u2682","id":"3"},{"name":"\u2683","id":"4"},{"name":"\u2684","id":"5"},{"name":"\u2685","id":"6"}];
+var randomNumber ="";
+function showAreas(){          
+    var obj = areas;
+    document.getElementById("body").innerHTML = "";
+    //alert(randomNumber);
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var s = document.createElement("span");
+      var t = document.createTextNode(d.name) ;                     
+      s.style = "font-size:100px;line-height:0.6em;opacity:0.6";   
+      s.appendChild(t)      
+      if (Math.floor(d.id) === Math.floor(randomNumber) ){ 
+      li.className = "w3-card w3-col s6 w3-center w3-xlarge w3-hover-teal w3-yellow" ;            
+      } else {
+      li.className = "w3-card w3-col s6 w3-center w3-xlarge w3-hover-teal w3-teal" ;      
+      }
+      /*li.onclick = function(){ 
+            var obj = this.innerHTML;
+            var fobj = document.getElementById("fArea");
+            fobj.value = obj;
+      		showTopics(); 
+      }; */
+      li.appendChild(s);        
+      document.getElementById("body").appendChild(li);      
+    });   
+}   
+function showNumber(){
+    var r = document.getElementById("fRand");
+    var num = Math.floor(Math.random()* 6)+1;
+    randomNumber = num;    
+    r.innerHTML =  num;    
+    showAreas();
+ } 
+</script>
+<body onload="showAreas()">
+<div class="w3-bar w3-theme w3-xxxlarge">
+  <a href="#" class="w3-bar-item w3-button w3-green" onclick="showAreas();">
+      <i class="fa fa-home"></i></a>    
+  <a href="#" class="w3-bar-item w3-button w3-green">
+      Throw </a>
+  <a href="#" class="w3-bar-item w3-button w3-right" onclick="showNumber();">
+      &#127922;</a>                      
+  <a href="#" class="w3-bar-item w3-button w3-right" id="fRand">
+      </a>
+  <!-- <a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right"  onclick="showSearch();">
+      <i class="fa fa-search"></i></a>   
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onclick="showFilter();">
+        <i class="fa fa-filter"></i></a> -->
+</div> 
+
+<div class="w3-container w3-theme w3-hide" id="fmFilter">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/> 
+</div>
+<div class="w3-container w3-theme w3-hide" id="fmSearch">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="searchAll" placeholder="Search..."/>           
+</div> 
+
+<div id="body"></div>
+<input type="hidden" id="fArea" value="" />
+<input type="hidden" id="fTopic" value="" />
+
+</body>
+</html>
+
