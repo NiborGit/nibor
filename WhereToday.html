@@ -13,6 +13,7 @@
 </style>
 <script>
 var currEntry=[];
+var dataDate = new Date();
 var areas = [{"name":"Email","image":"fa-envelope"},{"name":"Meeting","image":"fa-users"},
 {"name":"Phone","image":"fa-mobile"},
 {"name":"Coding","image":"fa-code"},
@@ -91,9 +92,10 @@ function showSearch(){
     var obj = document.getElementById("fmSearch");
      obj.classList.toggle('w3-hide');     
  }
-function showEntry(){	
-    //alert(JSON.stringify(currEntry));
-    var cobj = currEntry;    
+
+function showEntry(){	    
+    var cobj = currEntry;
+    document.getElementById("body").innerHTML = "";
     cobj.forEach(function(doc) {                        
               var d = doc;
       		  var li = document.createElement("div");      		  
@@ -102,7 +104,7 @@ function showEntry(){
                            + d.topic + "</div> "
                            + "<div class='w3-right'>" 
                            +  d.time+ "</div>";
-                        document.getElementById("body").appendChild(li);
+             document.getElementById("body").appendChild(li);
      });              
 }
 function searchMe() {
@@ -121,16 +123,38 @@ function searchMe() {
       li[i].style.display = "none";
     }
   }
+ } 
+function setDate(){
+	var obj = document.getElementById("inputdate");
+    document.getElementById("logdate").innerHTML = obj.value;
+    dataDate = obj.value;
+}
+function setToday(){   
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth(); 
+  var yyyy = today.getFullYear();
+  if( dd < 10) { dd = '0'+dd }; 
+  if( mm < 10) { mm = '0'+mm };
+  today = yyyy + '-' + mm + '-' + dd;  
+  document.getElementById("inputdate").value = today;   
+  document.getElementById("logdate").innerHTML = today;   
 }
 </script>
-<body class="w3-green" onload="showAreas()">
+<body class="w3-green" onload="setToday();showAreas()">
 <div class="w3-bar w3-theme">
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green" onclick="showAreas();">
       <i class="fas fa-list"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
-      <i class="fas fa-back"></i></a>            
+      <i class="fas fa-arrow-left"></i></a>            
   <!--<a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right"  onclick="showSearch();">
       <i class="fas fa-search"></i></a>   -->
+<a href="#" class="w3-bar-item w3-button w3-xlarge">
+      <input id="inputdate" type="date" onchange="setDate()" ></a>                  
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" >
+      <i id="logdate"></i></a>
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+        <i class="fas fa-calendar-times"></i></a>                   
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onclick="showFilter();">
         <i class="fas fa-filter"></i></a>             
 </div> 
