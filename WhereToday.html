@@ -91,14 +91,18 @@ function showSearch(){
     var obj = document.getElementById("fmSearch");
      obj.classList.toggle('w3-hide');     
  }
-
 function showEntry(){	
     //alert(JSON.stringify(currEntry));
-    var cobj = currEntry;
+    var cobj = currEntry;    
     cobj.forEach(function(doc) {                        
-             var d = doc;
-             var bobj = document.getElementById("body");
-             bobj.innerHTML = bobj.innerHTML + d.topic + " " + d.time + "<br>";
+              var d = doc;
+      		  var li = document.createElement("div");      		  
+      		  li.className = "w3-container w3-large s6 w3-leftbar w3-animate-bottom ";
+      		  li.innerHTML = "<div class='w3-left'>" 
+                           + d.topic + "</div> "
+                           + "<div class='w3-right'>" 
+                           +  d.time+ "</div>";
+                        document.getElementById("body").appendChild(li);
      });              
 }
 function searchMe() {
