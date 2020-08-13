@@ -92,6 +92,11 @@ function showSearch(){
     var obj = document.getElementById("fmSearch");
      obj.classList.toggle('w3-hide');     
  }
+function showCal(){
+    var obj = document.getElementById("inputdate");
+    obj.click();
+    obj.classList.toggle('w3-hide');     
+ }
 
 function showEntry(){	    
     var cobj = currEntry;
@@ -126,7 +131,7 @@ function searchMe() {
  } 
 function setDate(){
 	var obj = document.getElementById("inputdate");
-    //document.getElementById("logdate").innerHTML = obj.value;
+    document.getElementById("foot").innerHTML = obj.value;
     dataDate = obj.value;
 }
 function setToday(){   
@@ -138,7 +143,7 @@ function setToday(){
   if( mm < 10) { mm = '0'+mm };
   today = yyyy + '-' + mm + '-' + dd;  
   document.getElementById("inputdate").value = today;   
-  //document.getElementById("logdate").innerHTML = today;   
+  document.getElementById("foot").innerHTML = today;   
 }
 </script>
 <body class="w3-green" onload="setToday();showAreas()">
@@ -149,10 +154,10 @@ function setToday(){
       <i class="fas fa-arrow-left"></i></a>            
   <!--<a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right"  onclick="showSearch();">
       <i class="fas fa-search"></i></a>   -->
-<a href="#" class="w3-bar-item w3-button w3-small">
-      <input id="inputdate" type="date" onchange="setDate()" ></a>                  
-<!--  <a href="#" class="w3-bar-item w3-button w3-small" >
-      <i id="logdate"></i></a> -->
+<a href="#" class="w3-bar-item w3-button w3-large">
+      <input class="w3-hide" id="inputdate" type="date" onchange="setDate()" ></a>                  
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" >
+      <i id="logdate" class="fas fa-calendar" onclick="showCal();"></i></a> 
 <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="fas fa-calendar-times"></i></a>                   
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onclick="showFilter();">
@@ -165,7 +170,7 @@ function setToday(){
 <div class="w3-container w3-theme w3-hide" id="fmSearch">
 <input class="w3-input w3-theme w3-hover-white" type="text" id="searchAll" placeholder="Search..."/>           
 </div> 
-
+<div id="foot" class="w3-container w3-large s12 w3-leftbar w3-animate-left"></div>
 <div id="body"></div>
 <input type="hidden" id="fArea" value="" />
 <input type="hidden" id="fTopic" value="" />
