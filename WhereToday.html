@@ -126,7 +126,7 @@ function searchMe() {
  } 
 function setDate(){
 	var obj = document.getElementById("inputdate");
-    document.getElementById("logdate").innerHTML = obj.value;
+    //document.getElementById("logdate").innerHTML = obj.value;
     dataDate = obj.value;
 }
 function setToday(){   
@@ -138,7 +138,7 @@ function setToday(){
   if( mm < 10) { mm = '0'+mm };
   today = yyyy + '-' + mm + '-' + dd;  
   document.getElementById("inputdate").value = today;   
-  document.getElementById("logdate").innerHTML = today;   
+  //document.getElementById("logdate").innerHTML = today;   
 }
 </script>
 <body class="w3-green" onload="setToday();showAreas()">
@@ -151,8 +151,8 @@ function setToday(){
       <i class="fas fa-search"></i></a>   -->
 <a href="#" class="w3-bar-item w3-button w3-small">
       <input id="inputdate" type="date" onchange="setDate()" ></a>                  
-  <a href="#" class="w3-bar-item w3-button w3-small" >
-      <i id="logdate"></i></a>
+<!--  <a href="#" class="w3-bar-item w3-button w3-small" >
+      <i id="logdate"></i></a> -->
 <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="fas fa-calendar-times"></i></a>                   
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onclick="showFilter();">
