@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>What I Do?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css"> 
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>
+<script>
+var currEntry=[];
+var areas = [{"name":"50 Jumpinp Jacks","image":"fa-universal-access"},
+{"name":"Squat Jumps 20","image":"fa-level-up-alt"},
+{"name":"Push-ups 20","image":"fa-hand-paper"},
+{"name":"Lunges 30","image":"fa-running"},
+{"name":"Curls 25","image":"fa-dumbbell"},
+{"name":"Squats w/weights 25","image":"fa-baby"},
+{"name":"Dips w/chair 25","image":"fa-chair"},
+{"name":"Walking 30","image":"fa-walking"},
+{"name":"Bike 15","image":"fa-bicycle"},
+{"name":"Swim 15","image":"fa-swimmer"},
+{"name":"Warm-down 10","image":"fa-stopwatch"},
+{"name":"Rest","image":"fa-bed"}];
+// u2328 keyboard
+var times = [{"name":"15 min","image":"fa-clock-o","num":"15"},
+{"name":"30 min","image":"fa-clock-o","num":"30"},
+{"name":"1 hour","image":"fa-clock-o","num":"60"},
+{"name":"2 hours","image":"fa-clock-o","num":"120"},
+{"name":"Half Day","image":"fa-clock-o","num":"3600"},
+{"name":"All Day","image":"fa-clock-o","num":"7200"}]
+function showAreas(){          
+    var obj = areas;
+    document.getElementById("body").innerHTML = "";
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var t = document.createElement("div");
+      t.className = "w3-xlarge";
+      var tm = document.createTextNode(d.name);
+      t.appendChild(tm);      
+      li.className = "fa w3-card w3-col s6 w3-theme w3-center w3-xxxlarge w3-hover-grey " + d.image ;
+      li.id = d.name;
+      li.onclick = function(){ 
+            var obj = this;
+            var fobj = document.getElementById("fArea");
+            fobj.value = obj.id                 
+      		showTopics(obj); 
+      };
+      li.appendChild(t);        
+      document.getElementById("body").appendChild(li);      
+    });
+}   
+function showTopics(obj){   
+    obj.classList.toggle('w3-hide');    
+}   
+</script>
+<body class="w3-green" onload="showAreas()">
+<div class="w3-bar w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green" onclick="showAreas();">
+      <i class="fa fa-list"></i></a> <span class="w3-theme w3-right">Everyday Workout </span>
+</div> 
+
+<div class="w3-container w3-theme w3-hide" id="fmFilter">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/> 
+</div>
+<div class="w3-container w3-theme w3-hide" id="fmSearch">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="searchAll" placeholder="Search..."/>           
+</div> 
+
+<div id="body"></div>
+<input type="hidden" id="fArea" value="" />
+<input type="hidden" id="fTopic" value="" />
+
+</body>
+</html>
