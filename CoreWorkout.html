@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Core Workout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> 
+                   
+<head>
+<style>
+
+#siteHeader{
+    width: 225px;
+    height: 175px;
+    overflow: hidden; 
+    margin: auto;              
+}
+
+#siteHeader #siteLogo{    
+    /*Columns  margin-left: 0px; -225px; -450px; -675px;*/
+    /*set 1 margin-top: -0px;  next row superman -175px superman -350px heel touch -525px toe touch -700px side v crunch  */
+    /*set 2 margin-left: -225px; */
+    /*set 3 margin-left: -450px; */
+    /*set 4 margin-left: -675px; */        
+    margin-top: -0px; // equals which column to move down    
+}
+#tabHeader {     
+    background-color:  orange;
+    width: 225px;
+    margin: auto;
+}
+</style>
+<script>    
+
+function switchImg( obj){
+    //var obj = document.getElementById("siteLogo");     
+    
+    if(obj.style.marginTop === ""){ 
+        obj.style.marginTop =  "-175px";
+     } else if(obj.style.marginTop ==="-175px"){
+        obj.style.marginTop =  "-350px";
+     } else if(obj.style.marginTop ==="-350px"){
+        obj.style.marginTop =  "-525px";
+     } else if(obj.style.marginTop ==="-525px"){
+        obj.style.marginTop =  "-700px";
+     } else if(obj.style.marginTop ==="-700px"){
+        obj.style.marginTop =  "";
+     }
+}   
+function setOne(){
+    var obj = document.getElementById("siteLogo");
+    obj.style.marginLeft = "";
+    var hObj = document.getElementById("setHeader");
+    hObj.innerHTML = "<h4>SET ONE</h4><p>Beginner 10-15 REPS X 2 SETS</p>";
+}
+function setTwo(){
+    var obj = document.getElementById("siteLogo");
+    obj.style.marginLeft = "-225px";
+    var hObj = document.getElementById("setHeader");
+    hObj.innerHTML = "<h4>SET TWO</h4><p>Intermediate 10-15 REPS X 3 SETS</p>";
+}
+
+function setThree(){
+    var obj = document.getElementById("siteLogo");
+    obj.style.marginLeft = "-450px";
+    var hObj = document.getElementById("setHeader");
+    hObj.innerHTML = "<h4>SET THREE</h4><p>Advanced 10-15 REPS X 4 SETS</p>";
+}
+
+function setFour(){
+    var obj = document.getElementById("siteLogo");
+    obj.style.marginLeft = "-675px";
+    var hObj = document.getElementById("setHeader");
+    hObj.innerHTML = "<h4>SET FOUR</h4><p>RESTS BETWEEN SETS 1 MIN. MAX</p>";
+}
+
+</script>
+</head>
+<body class="w3-theme w3-container">
+<div class="w3-panel w3-center">
+<div id="setHeader" class="w3-card w3-center" >
+      <h4>SET ONE</h4><p>Beginner 10-15 REPS X 2 SETS</p>
+</div>         
+<div id="siteHeader" class="w3-theme w3-card ">
+       <img id="siteLogo" src="CoreWorkout.jpg" onclick="switchImg(this);" >    
+</div>
+<div id="tabHeader" class="w3-card w3-center" >
+<span class="w3-card" onclick="setOne()">  ONE</span>&nbsp;
+<span class="w3-card" onclick="setTwo()">  TWO</span>&nbsp;
+<span class="w3-card" onclick="setThree()">THREE</span>&nbsp;
+<span class="w3-card" onclick="setFour()"> FOUR</span>&nbsp;
+</div>       
+</div>
+</body>
+</html>
