@@ -92,7 +92,7 @@ function getChapters(){
             console.log("chap loaded")
             } else { alert("error...!!!"); }
           }; 
-      xmlhttp.open("GET", "/nibor/Json/BiNTChaptersEs.json", true);
+      xmlhttp.open("GET","/nibor/Json/BiNTChaptersEs.json", true);
       xmlhttp.send();
 } 
     function clearAll(){
@@ -141,7 +141,6 @@ function getChapters(){
                 }
             });
     }   
-    
     function showText(){ 
         document.getElementById("myULverses").innerHTML = '';
         document.getElementById("myULchapters").innerHTML = ''; 
