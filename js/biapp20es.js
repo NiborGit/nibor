@@ -90,9 +90,9 @@ function getChapters(){
             if (this.readyState == 4 && this.status == 200) {
             objChap = JSON.parse(this.responseText);
             console.log("chap loaded")
-            } else { alert("error...!!!"); }
+            }
           }; 
-      xmlhttp.open("GET","/nibor/Json/BiNTChaptersEs.json", true);
+      xmlhttp.open("GET","/nibor/Json/BiNTChaptersEs.json", false);
       xmlhttp.send();
 } 
     function clearAll(){
@@ -123,7 +123,7 @@ function getChapters(){
             });
            }
         };
-      xmlhttp.open("GET", "/nibor/Json/BiNTBooksEs.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNTBooksEs.json", false);
       xmlhttp.send();
     }
     function showChapters(){          
