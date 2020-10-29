@@ -122,7 +122,7 @@ function getChapters(){
             });
            }
         };
-      xmlhttp.open("GET", "/nibor/Json/BiNTesBooks.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNTBooksEs.json", true);
       xmlhttp.send();
     }
     function showChapters(){          
