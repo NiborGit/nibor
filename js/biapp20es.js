@@ -2,6 +2,7 @@ var currIndex;
 var objChap;
 var fbb = 'c0e759b5-e9eb-426a-b842-fd5acb9e3318';
 var fbi = 'cb8ad352-2ab0-43af-9c8c-01f4930dc0c2';
+var fbc = '9d9232d8-c38a-4ff6-8cc4-47301f2ca553';
 showBooks();
 getChapters();
         var list = document.querySelector('div#myULbooks');
@@ -93,7 +94,7 @@ function getChapters(){
             console.log("chap loaded")
             }
           }; 
-      xmlhttp.open("GET", "/nibor/Json/BiNTChapters.json", true);
+      xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/biblia-para-mi.appspot.com/o/BiNTChaptersEs.json?alt=media&token="+fbc, true);
       xmlhttp.send();
 } 
     function clearAll(){
