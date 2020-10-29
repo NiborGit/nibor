@@ -199,7 +199,7 @@ function getChapters(){
             });
            }
         };
-      xmlhttp.open("GET", "/nibor/Json/BiNTNasb.json", true);
+      xmlhttp.open("GET", "/nibor/Json/BiNT_RV_es.json", true);
       xmlhttp.send();
     }    
 function searchMe() {
