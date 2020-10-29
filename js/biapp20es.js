@@ -90,7 +90,7 @@ function getChapters(){
             if (this.readyState == 4 && this.status == 200) {
             objChap = JSON.parse(this.responseText);
             console.log("chap loaded")
-            }
+            } else { alert("error...!!!"); }
           }; 
       xmlhttp.open("GET", "/nibor/Json/BiNTChaptersEs.json", true);
       xmlhttp.send();
