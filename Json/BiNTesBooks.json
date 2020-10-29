@@ -1,0 +1,137 @@
+[
+    {
+        "BookKey": "40N  ",
+        "BookName": "Mateo",
+        "ShortName": "Mt        "
+    },
+    {
+        "BookKey": "41N  ",
+        "BookName": "Marcos",
+        "ShortName": "Mc        "
+    },
+    {
+        "BookKey": "42N  ",
+        "BookName": "Lucas",
+        "ShortName": "Lc        "
+    },
+    {
+        "BookKey": "43N  ",
+        "BookName": "Juan",
+        "ShortName": "Ju        "
+    },
+    {
+        "BookKey": "44N  ",
+        "BookName": "Hechos",
+        "ShortName": "He        "
+    },
+    {
+        "BookKey": "45N  ",
+        "BookName": "Romanos",
+        "ShortName": "Rm        "
+    },
+    {
+        "BookKey": "46N  ",
+        "BookName": "1 Corintios",
+        "ShortName": "1Co       "
+    },
+    {
+        "BookKey": "47N  ",
+        "BookName": "2 Corintios",
+        "ShortName": "2Co       "
+    },
+    {
+        "BookKey": "48N  ",
+        "BookName": "Galatas",
+        "ShortName": "Gl        "
+    },
+    {
+        "BookKey": "49N  ",
+        "BookName": "Efesios",
+        "ShortName": "Ef        "
+    },
+    {
+        "BookKey": "50N  ",
+        "BookName": "Filipenses",
+        "ShortName": "Fp        "
+    },
+    {
+        "BookKey": "51N  ",
+        "BookName": "Colosenses",
+        "ShortName": "Cl        "
+    },
+    {
+        "BookKey": "52N  ",
+        "BookName": "1 Tesalonicenses",
+        "ShortName": "1Ts       "
+    },
+    {
+        "BookKey": "53N  ",
+        "BookName": "2 Tesalonicenses",
+        "ShortName": "2Ts       "
+    },
+    {
+        "BookKey": "54N  ",
+        "BookName": "1 Timoteo",
+        "ShortName": "1Tm       "
+    },
+    {
+        "BookKey": "55N  ",
+        "BookName": "2 Timoteo",
+        "ShortName": "2Tm       "
+    },
+    {
+        "BookKey": "56N  ",
+        "BookName": "Tito",
+        "ShortName": "Tt        "
+    },
+    {
+        "BookKey": "57N  ",
+        "BookName": "Filemon",
+        "ShortName": "Fm        "
+    },
+    {
+        "BookKey": "58N  ",
+        "BookName": "Hebreos",
+        "ShortName": "Hb        "
+    },
+    {
+        "BookKey": "59N  ",
+        "BookName": "Santiago",
+        "ShortName": "St        "
+    },
+    {
+        "BookKey": "60N  ",
+        "BookName": "1 Pedro",
+        "ShortName": "1Pe       "
+    },
+    {
+        "BookKey": "61N  ",
+        "BookName": "2 Pedro",
+        "ShortName": "2Pe       "
+    },
+    {
+        "BookKey": "62N  ",
+        "BookName": "1 Juan",
+        "ShortName": "1Ju       "
+    },
+    {
+        "BookKey": "63N  ",
+        "BookName": "2 Juan",
+        "ShortName": "2Ju       "
+    },
+    {
+        "BookKey": "64N  ",
+        "BookName": "3 Juan",
+        "ShortName": "3Ju       "
+    },
+    {
+        "BookKey": "65N  ",
+        "BookName": "Judas",
+        "ShortName": "Jd        "
+    },
+    {
+        "BookKey": "66N  ",
+        "BookName": "Apocalipsis",
+        "ShortName": "Ap        "
+    }
+]
