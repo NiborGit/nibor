@@ -17,7 +17,7 @@ link = function breakout(elm) {
 	var canvas = $(elm).find('canvas')[0];
 
 	var ctx = canvas.getContext("2d");
-	var ballRadius = 10;
+	var ballRadius = 15;
 	canvas.width = document.documentElement.clientWidth-30;
         var width = canvas.width;
         var width = document.documentElement.clientWidth;
@@ -27,13 +27,13 @@ link = function breakout(elm) {
 	var y = height-30;
 	var dx = 2;
 	var dy = -2;
-	var paddleHeight = 10;
+	var paddleHeight = 15;
 	var paddleWidth = 75;
 	var paddleX = (canvas.width-paddleWidth)/2;
 	var rightPressed = false;
 	var leftPressed = false;
 	var brickRowCount = 15;
-	var brickColumnCount = 7;
+	var brickColumnCount = 10;
 	var brickPadding = 2;
 	var brickOffsetLeft = 10;
 	var brickOffsetTop = 30;
@@ -57,13 +57,16 @@ link = function breakout(elm) {
 
 	// Spells out 404
 	var letterMap = [];
-	letterMap[0]=[0,1,2,6,7,8];
-	letterMap[1]=[0,2,6,8,9,];
-	letterMap[2]=[0,2,6,8];
-	letterMap[3]=[0,1,2,3,4,5,6,7,9,11];
-	letterMap[4]=[0,1,3,5,6,8,9,11,12,13];
-	letterMap[5]=[0,2,3,5,6,8,9,11,13];
-	letterMap[6]=[0,2,3,4,5,6,7,8,9,11,13];
+	letterMap[0]=[];
+	letterMap[1]=[1,3,5,7,9,11,13];
+	letterMap[2]=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	letterMap[3]=[2,4,6,8,10,12];
+	letterMap[4]=[2,3,6,7,10,11,14];
+	letterMap[5]=[0,2,6,8,10,12];
+	letterMap[6]=[3,7,11];
+        letterMap[7]=[3,7,11];
+        letterMap[8]=[3,7,11];
+        letterMap[9]=[0,1,2,3,4,5,6,7,8,9,10];
 
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
