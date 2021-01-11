@@ -18,8 +18,11 @@ link = function breakout(elm) {
 
 	var ctx = canvas.getContext("2d");
 	var ballRadius = 10;
-	var width = canvas.width;
-	var height = canvas.height;
+	canvas.width = document.documentElement.clientWidth-30;
+        var width = canvas.width;
+        var width = document.documentElement.clientWidth;
+	canvas.height = document.documentElement.clientHeight/2;
+        var height = canvas.height;	
 	var x = width/2;
 	var y = height-30;
 	var dx = 2;
