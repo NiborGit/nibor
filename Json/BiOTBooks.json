@@ -1,0 +1,197 @@
+﻿[
+    {
+        "BookKey": "01O",
+        "BookName": "Genesis",
+        "ShortName": "Ge"
+    },
+    {
+        "BookKey": "02O",
+        "BookName": "Exodus",
+        "ShortName": "Ex"
+    },
+    {
+        "BookKey": "03O",
+        "BookName": "Leviticus",
+        "ShortName": "Le"
+    },
+    {
+        "BookKey": "04O",
+        "BookName": "Numbers",
+        "ShortName": "Nu"
+    },
+    {
+        "BookKey": "05O",
+        "BookName": "Deuteronomy",
+        "ShortName": "De"
+    },
+    {
+        "BookKey": "06O",
+        "BookName": "Joshua",
+        "ShortName": "Jos"
+    },
+    {
+        "BookKey": "07O",
+        "BookName": "Judges",
+        "ShortName": "Jud"
+    },
+    {
+        "BookKey": "08O",
+        "BookName": "Ruth",
+        "ShortName": "Ru"
+    },
+    {
+        "BookKey": "09O",
+        "BookName": "1 Samuel",
+        "ShortName": "1Sm"
+    },
+    {
+        "BookKey": "10O",
+        "BookName": "2 Samuel",
+        "ShortName": "2Sm"
+    },
+    {
+        "BookKey": "11O",
+        "BookName": "1 Kings",
+        "ShortName": "1Ki"
+    },
+    {
+        "BookKey": "12O",
+        "BookName": "2 Kings",
+        "ShortName": "2Ki"
+    },
+    {
+        "BookKey": "13O",
+        "BookName": "1 Chronicles",
+        "ShortName": "1Ch"
+    },
+    {
+        "BookKey": "14O",
+        "BookName": "2 Chronicles",
+        "ShortName": "2Ch"
+    },
+    {
+        "BookKey": "15O",
+        "BookName": "Ezra",
+        "ShortName": "Ez"
+    },
+    {
+        "BookKey": "16O",
+        "BookName": "Nehemiah",
+        "ShortName": "Ne"
+    },
+    {
+        "BookKey": "17O",
+        "BookName": "Esther",
+        "ShortName": "Est"
+    },
+    {
+        "BookKey": "18O",
+        "BookName": "Job",
+        "ShortName": "Job"
+    },
+    {
+        "BookKey": "19O",
+        "BookName": "Psalms",
+        "ShortName": "Ps"
+    },
+    {
+        "BookKey": "20O",
+        "BookName": "Proverbs",
+        "ShortName": "Pr"
+    },
+    {
+        "BookKey": "21O",
+        "BookName": "Ecclesiastes",
+        "ShortName": "Ec"
+    },
+    {
+        "BookKey": "22O",
+        "BookName": "Song of Solomon",
+        "ShortName": "Ss"
+    },
+    {
+        "BookKey": "23O",
+        "BookName": "Isaiah",
+        "ShortName": "Is"
+    },
+    {
+        "BookKey": "24O",
+        "BookName": "Jeremiah",
+        "ShortName": "Je"
+    },
+    {
+        "BookKey": "25O",
+        "BookName": "Lamentations",
+        "ShortName": "La"
+    },
+    {
+        "BookKey": "26O",
+        "BookName": "Ezekiel",
+        "ShortName": "Ez"
+    },
+    {
+        "BookKey": "27O",
+        "BookName": "Daniel",
+        "ShortName": "Da"
+    },
+    {
+        "BookKey": "28O",
+        "BookName": "Hosea",
+        "ShortName": "Ho"
+    },
+    {
+        "BookKey": "29O",
+        "BookName": "Joel",
+        "ShortName": "Jo"
+    },
+    {
+        "BookKey": "30O",
+        "BookName": "Amos",
+        "ShortName": "Am"
+    },
+    {
+        "BookKey": "31O",
+        "BookName": "Obadiah",
+        "ShortName": "Ob"
+    },
+    {
+        "BookKey": "32O",
+        "BookName": "Jonah",
+        "ShortName": "Jnh"
+    },
+    {
+        "BookKey": "33O",
+        "BookName": "Micah",
+        "ShortName": "Mih"
+    },
+    {
+        "BookKey": "34O",
+        "BookName": "Nahum",
+        "ShortName": "Nah"
+    },
+    {
+        "BookKey": "35O",
+        "BookName": "Habakkuk",
+        "ShortName": "Hab"
+    },
+    {
+        "BookKey": "36O",
+        "BookName": "Zephaniah",
+        "ShortName": "Zph"
+    },
+    {
+        "BookKey": "37O",
+        "BookName": "Haggai",
+        "ShortName": "Hag"
+    },
+    {
+        "BookKey": "38O",
+        "BookName": "Zechariah",
+        "ShortName": "Zch"
+    },
+    {
+        "BookKey": "39O",
+        "BookName": "Malachi",
+        "ShortName": "Ma"
+    }
+]
