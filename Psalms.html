@@ -22,23 +22,25 @@ async function showAreas(){
       //https://labs.bible.org/api/?passage=Psalm%201&type=text
       var d = doc;
       var li = document.createElement("div");
-      var s = document.createElement("span");
-      var t = document.createTextNode(d.Name + " " + d.id) ;                     
+      var s = document.createElement("span");      
       s.style = "font-size:100px;line-height:0.6em;opacity:0.6";   
-      s.appendChild(t)      
+      
       if (Math.floor(d.id) === Math.floor(randomNumber) ){ 
-      //li.className = "w3-card w3-col s6 w3-center w3-xlarge w3-hover-teal w3-yellow w3-padding-32" ;            
-      //} else {
-      li.className = "w3-card w3-center w3-xlarge w3-hover-green w3-teal w3-padding-64" ;      
-      //}
-      /*li.onclick = function(){ 
-            var obj = this.innerHTML;
-            var fobj = document.getElementById("fArea");
-            fobj.value = obj;
-      		showTopics(); 
-      }; */
-      li.appendChild(s);        
-      document.getElementById("body").appendChild(li);
+          var t = document.createTextNode(d.Name + " " + d.id) ;  
+          s.appendChild(t)                 
+          li.className = "w3-card w3-center w3-xlarge w3-hover-green w3-teal w3-padding-64" ;           
+          li.appendChild(s);            
+          var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                        objChap = JSON.parse(this.responseText);
+                        li.appendChild(objChap);  
+                        console.log("chap loaded")
+                }
+          }; 
+          xmlhttp.open("GET", "https://labs.bible.org/api/?passage=Psalm%20" + d.id + "&type=text", true);
+          xmlhttp.send();  
+          document.getElementById("body").appendChild(li);
       }
     });   
 }   
