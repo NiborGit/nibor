@@ -29,11 +29,12 @@ async function showAreas(){
           var t = document.createTextNode(d.Name + " " + d.id) ;  
           s.appendChild(t)                 
           li.className = "w3-card w3-center w3-xlarge w3-hover-green w3-teal w3-padding-64" ;           
-          li.appendChild(s);            
+          li.appendChild(s);  
+          
           var xmlhttp = new XMLHttpRequest();
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                        objChap = JSON.parse(this.responseText);
+                        var objChap = JSON.parse(this.responseText);
                         li.appendChild(objChap);  
                         console.log("chap loaded")
                 }
@@ -43,7 +44,7 @@ async function showAreas(){
           document.getElementById("body").appendChild(li);
       }
     });   
-}   
+}    
 function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
    }
