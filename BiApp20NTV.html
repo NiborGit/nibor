@@ -6443,7 +6443,7 @@ function showSearch(){
      var bnm = document.getElementById("bShortName").value;
      var cobj = document.getElementById("bChapter").value;
      var lbnm = document.getElementById("bBookName").value;
-     //alert(cobj + ' ' + bnm + ' ' + lbnm);
+     
 }
  function showText(){ 
         document.getElementById("myULverses").innerHTML = '';
@@ -6456,29 +6456,35 @@ function showSearch(){
         var xmlhttp = new XMLHttpRequest();        
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            var myObj2 = this.responseText; 
-            //vText = myObj.replace("<span class=\"vn\">","");  
-            var myObj = myObj2.replace("</span>"," </span>");  
+            var myObj = this.responseText; 
             var htl = document.createElement('html');
             htl.innerHTML = myObj;
-            //var sSpan = htl.querySelector('span');
-            //for(var t=0;t < sSpan.length;t++){ sSpan[t].remove()};
-            var iText = htl.getElementsByTagName('p');            
+            var iText = htl.getElementsByTagName('p');                        
             
-            for(var m=0; m < iText.length;m++){ console.log(iText[m].innerHTML); //};
-            //alert(JSON.stringify(myObj));
+            for(var m=0; m < iText.length;m++){ 
+              //console.log(iText[m].innerHTML); 
               var cobj = document.getElementById("bChapter");
               var chap = cobj.value; 
               var el = document.getElementById("bShortName");
               var bsn = el.value;   
               var li = document.createElement("div");
-              var bHtml = iText[m].innerHTML.replace(/(<span class=\"vn\">)/igm, ' ').replace(/<\/span>/igm, ' ');              
+              var itemP = document.createElement('p');
+              itemP = iText[m];
+              var itemClass = JSON.stringify(iText[m]);
+              var itemPString= JSON.stringify(itemP);
+              var bHtml='';
+              var nCheck='';
+              if(itemP.className !== "subhead" && itemP.className !== "chapter-number"  ){
+               nCheck = iText[m].innerHTML.replace(/(<span class=\"tn)/igm, '<em class=\"w3-small ').replace(/<\/span>/igm, '.&nbsp;<\/em>');              
+               var bHtml = nCheck.replace(/(<span class=\"vn\")/igm, '<em class=\"w3-large\" ').replace(/<\/span>/igm, '<\/em>')
+               //console.log(nCheck);
+              } else {
+               bHtml = itemP.innerHTML;
+              }
               li.innerHTML = bHtml;//iText[m].innerHTML + "<br>";
-              li.className = "w3-container";
-	      //var t = document.createElement(iText[m].innerHTML);//document.createNode(myObj);
-              //li.appendChild(t); 
+              li.className = "w3-container";	     
               document.getElementById("myULverses").appendChild(li);
-              //li.innerHTML = myObj;              
+
               };            
             setIndex(bsn, chap);                    
            }
