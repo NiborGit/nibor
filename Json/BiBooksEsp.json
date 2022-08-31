@@ -1,0 +1,398 @@
+[
+    {
+        "BookKey": "01O",
+        "BookName": "Génesis",
+        "ShortName": "Gn",
+        "BookId": 1
+    },
+    {
+        "BookKey": "02O",
+        "BookName": "Éxodo",
+        "ShortName": "Éx",
+        "BookId": 2
+    },
+    {
+        "BookKey": "03O",
+        "BookName": "Levítico",
+        "ShortName": "Lv",
+        "BookId": 3
+    },
+    {
+        "BookKey": "04O",
+        "BookName": "Números",
+        "ShortName": "Nm",
+        "BookId": 4
+    },
+    {
+        "BookKey": "05O",
+        "BookName": "Deuteronomio",
+        "ShortName": "Dt",
+        "BookId": 5
+    },
+    {
+        "BookKey": "06O",
+        "BookName": "Josué",
+        "ShortName": "Jos",
+        "BookId": 6
+    },
+    {
+        "BookKey": "07O",
+        "BookName": "Jueces",
+        "ShortName": "Jue",
+        "BookId": 7
+    },
+    {
+        "BookKey": "08O",
+        "BookName": "Rut",
+        "ShortName": "Rt",
+        "BookId": 8
+    },
+    {
+        "BookKey": "09O",
+        "BookName": "1 Samuel",
+        "ShortName": "1S",
+        "BookId": 9
+    },
+    {
+        "BookKey": "10O",
+        "BookName": "2 Samuel",
+        "ShortName": "2S",
+        "BookId": 10
+    },
+    {
+        "BookKey": "11O",
+        "BookName": "1 Reyes",
+        "ShortName": "1R",
+        "BookId": 11
+    },
+    {
+        "BookKey": "12O",
+        "BookName": "2 Reyes",
+        "ShortName": "2R",
+        "BookId": 12
+    },
+    {
+        "BookKey": "13O",
+        "BookName": "1 Crónicas",
+        "ShortName": "1Cr",
+        "BookId": 13
+    },
+    {
+        "BookKey": "14O",
+        "BookName": "2 Crónicas",
+        "ShortName": "2Cr",
+        "BookId": 14
+    },
+    {
+        "BookKey": "15O",
+        "BookName": "Esdras",
+        "ShortName": "Esd",
+        "BookId": 15
+    },
+    {
+        "BookKey": "16O",
+        "BookName": "Nehemías",
+        "ShortName": "Neh",
+        "BookId": 16
+    },
+    {
+        "BookKey": "17O",
+        "BookName": "Ester",
+        "ShortName": "Est",
+        "BookId": 17
+    },
+    {
+        "BookKey": "18O",
+        "BookName": "Job",
+        "ShortName": "Job",
+        "BookId": 18
+    },
+    {
+        "BookKey": "19O",
+        "BookName": "Salmos",
+        "ShortName": "Sal",
+        "BookId": 19
+    },
+    {
+        "BookKey": "20O",
+        "BookName": "Proverbios",
+        "ShortName": "Pr",
+        "BookId": 20
+    },
+    {
+        "BookKey": "21O",
+        "BookName": "Eclesiastés",
+        "ShortName": "Ec",
+        "BookId": 21
+    },
+    {
+        "BookKey": "22O",
+        "BookName": "Cantares",
+        "ShortName": "Cnt",
+        "BookId": 22
+    },
+    {
+        "BookKey": "23O",
+        "BookName": "Isaías",
+        "ShortName": "Is",
+        "BookId": 23
+    },
+    {
+        "BookKey": "24O",
+        "BookName": "Jeremías",
+        "ShortName": "Jer",
+        "BookId": 24
+    },
+    {
+        "BookKey": "25O",
+        "BookName": "Lamentaciones",
+        "ShortName": "Lm",
+        "BookId": 25
+    },
+    {
+        "BookKey": "26O",
+        "BookName": "Ezequiel",
+        "ShortName": "Ez",
+        "BookId": 26
+    },
+    {
+        "BookKey": "27O",
+        "BookName": "Daniel",
+        "ShortName": "Dn",
+        "BookId": 27
+    },
+    {
+        "BookKey": "28O",
+        "BookName": "Oseas",
+        "ShortName": "Os",
+        "BookId": 28
+    },
+    {
+        "BookKey": "29O",
+        "BookName": "Joel",
+        "ShortName": "Jl",
+        "BookId": 29
+    },
+    {
+        "BookKey": "30O",
+        "BookName": "Amós",
+        "ShortName": "Am",
+        "BookId": 30
+    },
+    {
+        "BookKey": "31O",
+        "BookName": "Abdías",
+        "ShortName": "Abd",
+        "BookId": 31
+    },
+    {
+        "BookKey": "32O",
+        "BookName": "Jonás",
+        "ShortName": "Jon",
+        "BookId": 32
+    },
+    {
+        "BookKey": "33O",
+        "BookName": "Miqueas",
+        "ShortName": "Mi",
+        "BookId": 33
+    },
+    {
+        "BookKey": "34O",
+        "BookName": "Nahúm",
+        "ShortName": "Nah",
+        "BookId": 34
+    },
+    {
+        "BookKey": "35O",
+        "BookName": "Habacuc",
+        "ShortName": "Hab",
+        "BookId": 35
+    },
+    {
+        "BookKey": "36O",
+        "BookName": "Sofonías",
+        "ShortName": "Sof",
+        "BookId": 36
+    },
+    {
+        "BookKey": "37O",
+        "BookName": "Hageo",
+        "ShortName": "Hag",
+        "BookId": 37
+    },
+    {
+        "BookKey": "38O",
+        "BookName": "Zacarías",
+        "ShortName": "Zac",
+        "BookId": 38
+    },
+    {
+        "BookKey": "39O",
+        "BookName": "Malaquías",
+        "ShortName": "Mal",
+        "BookId": 39
+    },
+    {
+        "BookKey": "40N",
+        "BookName": "Mateo",
+        "ShortName": "Mt",
+        "BookId": 40
+    },
+    {
+        "BookKey": "41N",
+        "BookName": "Marcos",
+        "ShortName": "Mc",
+        "BookId": 41
+    },
+    {
+        "BookKey": "42N",
+        "BookName": "Lucas",
+        "ShortName": "Lc",
+        "BookId": 42
+    },
+    {
+        "BookKey": "43N",
+        "BookName": "Juan",
+        "ShortName": "Ju",
+        "BookId": 43
+    },
+    {
+        "BookKey": "44N",
+        "BookName": "Hechos",
+        "ShortName": "He",
+        "BookId": 44
+    },
+    {
+        "BookKey": "45N",
+        "BookName": "Romanos",
+        "ShortName": "Rm",
+        "BookId": 45
+    },
+    {
+        "BookKey": "46N",
+        "BookName": "1 Corintios",
+        "ShortName": "1Co",
+        "BookId": 46
+    },
+    {
+        "BookKey": "47N",
+        "BookName": "2 Corintios",
+        "ShortName": "2Co",
+        "BookId": 47
+    },
+    {
+        "BookKey": "48N",
+        "BookName": "Gálatas",
+        "ShortName": "Gl",
+        "BookId": 48
+    },
+    {
+        "BookKey": "49N",
+        "BookName": "Efesios",
+        "ShortName": "Ef",
+        "BookId": 49
+    },
+    {
+        "BookKey": "50N",
+        "BookName": "Filipenses",
+        "ShortName": "Fp",
+        "BookId": 50
+    },
+    {
+        "BookKey": "51N",
+        "BookName": "Colosenses",
+        "ShortName": "Cl",
+        "BookId": 51
+    },
+    {
+        "BookKey": "52N",
+        "BookName": "1 Tesalonicenses",
+        "ShortName": "1Ts",
+        "BookId": 52
+    },
+    {
+        "BookKey": "53N",
+        "BookName": "2 Tesalonicenses",
+        "ShortName": "2Ts",
+        "BookId": 53
+    },
+    {
+        "BookKey": "54N",
+        "BookName": "1 Timoteo",
+        "ShortName": "1Tm",
+        "BookId": 54
+    },
+    {
+        "BookKey": "55N",
+        "BookName": "2 Timoteo",
+        "ShortName": "2Tm",
+        "BookId": 55
+    },
+    {
+        "BookKey": "56N",
+        "BookName": "Tito",
+        "ShortName": "Tt",
+        "BookId": 56
+    },
+    {
+        "BookKey": "57N",
+        "BookName": "Filemón",
+        "ShortName": "Fm",
+        "BookId": 57
+    },
+    {
+        "BookKey": "58N",
+        "BookName": "Hebreos",
+        "ShortName": "Hb",
+        "BookId": 58
+    },
+    {
+        "BookKey": "59N",
+        "BookName": "Santiago",
+        "ShortName": "St",
+        "BookId": 59
+    },
+    {
+        "BookKey": "60N",
+        "BookName": "1 Pedro",
+        "ShortName": "1Pe",
+        "BookId": 60
+    },
+    {
+        "BookKey": "61N",
+        "BookName": "2 Pedro",
+        "ShortName": "2Pe",
+        "BookId": 61
+    },
+    {
+        "BookKey": "62N",
+        "BookName": "1 Juan",
+        "ShortName": "1Ju",
+        "BookId": 62
+    },
+    {
+        "BookKey": "63N",
+        "BookName": "2 Juan",
+        "ShortName": "2Ju",
+        "BookId": 63
+    },
+    {
+        "BookKey": "64N",
+        "BookName": "3 Juan",
+        "ShortName": "3Ju",
+        "BookId": 64
+    },
+    {
+        "BookKey": "65N",
+        "BookName": "Judas",
+        "ShortName": "Jd",
+        "BookId": 65
+    },
+    {
+        "BookKey": "66N",
+        "BookName": "Apocalipsis",
+        "ShortName": "Ap",
+        "BookId": 66
+    }
+]
