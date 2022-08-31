@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Bi NTV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
+
+<body >
+<div id="myBar" class="w3-bar w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green w3-left" onClick="showBooks()">
+      <i class="fas fa-th-list"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-center" >      
+      <i class="fas fa-home"></i>       
+      </a>            
+  <a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right" onClick="showSearch()" >
+      <i class="fas fa-search" ></i></a>   
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onClick="showFilter()">
+        <i class="fas fa-filter" ></i></a>             
+</div> 
+
+<div class="w3-container w3-theme w3-hide" id="fmFilter">
+<input class="w3-input w3-hover-white" type="text" id="search" onkeyup="searchMe();" placeholder="Filter..."/> 
+</div>
+<div class="w3-container w3-theme w3-hide" id="fmSearch">
+<input class="w3-input w3-hover-white" type="text" id="searchAll" placeholder="Search..."/>           
+</div> 
+
+<div class="w3-row w3-theme" id="myULbooks"></div> 
+<div class="w3-row w3-theme" id="myULchapters"></div> 
+
+<div id="myULverses" class="w3-container">
+</div>
+
+<input type="hidden" id="fBook" value="" />
+<input type="hidden" id="fShortName" value="" />
+<input type="hidden" id="fChap" value="" />
+<input type="hidden" id="fLastChap" value="" />
+<div id="fFooter" class="w3-theme">
+<h5>nibor@github.com</h5>
+</div>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+var pBook = "Hebreos";
+var pChap = "1";
+var pShortName = "Hb";
+var pLastChap = "1";
+var myObj= [];
+var objChap = [];
+w3.getHttpObject("https://niborgit.github.io/nibor/Json/BiBooksEsp.json", setBooks);
+w3.getHttpObject("https://niborgit.github.io/nibor/Json/BiChaptersEsp.json", setChapters);      
+
+
+var list = document.querySelector('div#myULbooks');
+  list.addEventListener('click', function(ev) {       
+    if (ev.target.tagName === 'DIV') {      
+      var obj = document.getElementById("fShortName");
+      obj.value = ev.target.innerHTML; 
+      //document.getElementById("header").innerHTML = obj.value;
+      for(var z=0; z < myObj.length; z++){
+           var item = myObj[z];
+           if (item.ShortName == obj.value){
+               document.getElementById("fBook").value = item.BookName;
+               console.log(item.BookName);
+               showChapters();
+           }
+      }
+        
+    }      
+  }, false);
+ var clist = document.querySelector('div#myULchapters');
+  clist.addEventListener('click', function(ev) {       
+    if (ev.target.tagName === 'DIV') {
+      //alert(ev.target.className);
+      var obj = document.getElementById("fChap");
+      obj.value = ev.target.innerHTML;       
+      getData();     
+    }      
+  }, false);  
+function getData(){
+   document.getElementById("myULbooks").innerHTML = '';
+   document.getElementById("myULchapters").innerHTML = ''; 
+
+   pShortName = document.getElementById("fShortName").value;
+   pChap = document.getElementById("fChap").value;
+   pBook = document.getElementById("fBook").value;
+
+   var surl = "https://api.nlt.to/api/passages?ref=";
+   var eurl = "&version=NTV&key=22b24473-b78b-46a1-8821-a85249c23db2"
+   var furl = surl + encodeURI(pBook) + "." + pChap + eurl;
+   console.log(furl);
+   w3.getHttpData(furl, myFunction);
+}
+function myFunction(x) {
+  var obj = document.getElementById("myULverses");
+  obj.innerHTML = x;
+}
+function showFilter(){
+   var obj = document.getElementById("fmFilter");
+    obj.classList.toggle('w3-hide');
+}
+function showSearch(){
+    var obj = document.getElementById("fmSearch");
+     obj.classList.toggle('w3-hide');     
+}
+function showBooks(){
+        document.getElementById("myULbooks").innerHTML = '';
+        document.getElementById("myULchapters").innerHTML = '';
+        document.getElementById("myULverses").innerHTML = '';        
+         myObj.forEach( function(doc) {
+         var d = doc;
+         var li = document.createElement("div");
+
+         var t = document.createTextNode(d.ShortName) ;                                 
+          li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+          li.appendChild(t);
+          document.getElementById("myULbooks").appendChild(li);
+        });     
+} 
+function setBooks(x) { 
+	myObj = x;
+        showBooks();
+}
+function showChapters(){          
+    var obj = document.getElementById("fShortName");
+    var ch = obj.value;            
+    document.getElementById("myULbooks").innerHTML = '';
+    document.getElementById("myULverses").innerHTML = '';
+    objChap.forEach(function(doc, z) {
+       var d = doc;                                     
+       if( ch === d.ShortName) {                     
+          var li = document.createElement("div");                  
+          var t = document.createTextNode(d.chapter) ;                
+          li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+          li.appendChild(t);
+          document.getElementById("myULchapters").appendChild(li);
+         }
+      });
+ }   
+function setChapters(x){
+   objChap = x;   
+}
+</script>
+</body>
+</html>
