@@ -1,29 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <title>Bi NTV App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
 <link rel="manifest" href="./site.webmanifest"> 
 	
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> 
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
-
+<style>
+#copyright:before {content: '\00A9'; }
+#myBar a {
+   text-decoration: none;   
+}
+#navMsg, #pBtn, #nBtn {  
+  display: inline-block;
+  text-align: center; 
+  width: 32%; 
+}
+</style>
 <body >
-<div id="myBar" class="w3-bar w3-theme">
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green w3-left" onClick="showBooks()">
+<div class="w3-sidebar w3-theme w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="https://niborgit.github.io/nibor/BiApp20.html" class="w3-bar-item w3-button">English NT</a>
+  <a href="https://niborgit.github.io/nibor/BiAppOT20.html" class="w3-bar-item w3-button">English OT</a>
+  <a href="https://niborgit.github.io/nibor/BiAppEs20.html" class="w3-bar-item w3-button">Spanish NT</a> 
+  <a href="https://niborgit.github.io/nibor/BiApp20NTV.html" class="w3-bar-item w3-button">Spanish NTV</a> 
+</div>
+<div id="myBar" class="w3-bar w3-theme-d4">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green w3-left" onClick="w3_open()">
       <i class="fas fa-th-list"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-center" >      
-      <i class="fas fa-home"></i>       
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-center" onClick="showBooks()">      
+      <i class="fas fa-book"></i>       
       </a>            
   <a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right" onClick="showSearch()" >
       <i class="fas fa-search" ></i></a>   
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onClick="showFilter()">
-        <i class="fas fa-filter" ></i></a>             
+  <!--<a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" onClick="showFilter()">
+        <i class="fas fa-filter" ></i></a> -->
 </div> 
 
 <div class="w3-container w3-theme w3-hide" id="fmFilter">
@@ -36,15 +54,15 @@
 <div class="w3-row w3-theme" id="myULbooks"></div> 
 <div class="w3-row w3-theme" id="myULchapters"></div> 
 
-<div id="myULverses" class="w3-container">
+<div id="myULverses" class="w3-container w3-sand">
 </div>
 
 <input type="hidden" id="fBook" value="" />
 <input type="hidden" id="fShortName" value="" />
 <input type="hidden" id="fChap" value="" />
 <input type="hidden" id="fLastChap" value="" />
-<div id="fFooter" class="w3-theme">
-<h5>nibor@github.com</h5>
+<div id="fFooter" class="w3-theme-dark">
+<h5><span id="copyright"></span>&nbsp;nibor@github.com</h5>
 </div>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script>
@@ -83,7 +101,21 @@ var list = document.querySelector('div#myULbooks');
       obj.value = ev.target.innerHTML;       
       getData();     
     }      
-  }, false);  
+  }, false);
+
+var objSrch = document.getElementById("searchAll");        
+        objSrch.addEventListener('keyup', function(event) {                                                      
+          if (event.keyCode === 13) {
+            if (event.preventDefault){
+                    event.preventDefault();
+                    console.log("prevent def avail")
+            } else {
+                    event.returnValue = false;
+                    console.log("prevent def NOT")
+            }
+            searchAll();                        
+           }
+     });  
 function getData(){
    document.getElementById("myULbooks").innerHTML = '';
    document.getElementById("myULchapters").innerHTML = ''; 
@@ -100,8 +132,23 @@ function getData(){
 }
 function myFunction(x) {
   var obj = document.getElementById("myULverses");
-  obj.innerHTML = x;
+  obj.innerHTML = x.replace(/(<a)/igm, '<em ').replace(/<\/a>/igm, '<\/em>');
 }
+
+function searchAll(){ 
+    document.getElementById("myULbooks").innerHTML = '';
+    document.getElementById("myULchapters").innerHTML = '';
+    document.getElementById("myULverses").innerHTML = '';
+
+    var srchInput = document.getElementById("searchAll");
+    var srchVal = encodeURI(srchInput.value);
+    var surl = "https://api.nlt.to/api/search?text=";
+    var eurl = "&version=NTV&key=22b24473-b78b-46a1-8821-a85249c23db2"
+    var furl = surl + srchVal + eurl;
+    console.log(furl);
+    w3.getHttpData(furl, myFunction);
+}    
+
 function showFilter(){
    var obj = document.getElementById("fmFilter");
     obj.classList.toggle('w3-hide');
@@ -119,7 +166,7 @@ function showBooks(){
          var li = document.createElement("div");
 
          var t = document.createTextNode(d.ShortName) ;                                 
-          li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+          li.className = "w3-theme-l1 w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
           li.appendChild(t);
           document.getElementById("myULbooks").appendChild(li);
         });     
@@ -138,7 +185,7 @@ function showChapters(){
        if( ch === d.ShortName) {                     
           var li = document.createElement("div");                  
           var t = document.createTextNode(d.chapter) ;                
-          li.className = "w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
+          li.className = "w3-theme-l1 w3-col s4 w3-center w3-xxlarge w3-hover-white" ;
           li.appendChild(t);
           document.getElementById("myULchapters").appendChild(li);
          }
@@ -146,6 +193,12 @@ function showChapters(){
  }   
 function setChapters(x){
    objChap = x;   
+}
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
 }
 </script>
 </body>
