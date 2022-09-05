@@ -67,7 +67,12 @@
 <input type="hidden" id="fShortName" value="" />
 <input type="hidden" id="fChap" value="" />
 <input type="hidden" id="fLastChap" value="" />
-<div id="fFooter" class="w3-theme-dark">
+
+<div id="fFooter" class="w3-theme-dark" style="position:relative">
+<p id="back-top" >
+<a href="#top" class="w3-btn w3-circle w3-theme-action w3-right" style="position:absolute;top:-28px;right:16px;">
+<i class="fas fa-angle-up"></i></a>
+</p>
 <h5><span id="copyright"></span>&nbsp;nibor@github.com</h5>
 </div>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -238,6 +243,8 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+
+
 </script>
 </body>
 </html>
