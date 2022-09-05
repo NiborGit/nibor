@@ -7,27 +7,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
 <link rel="stylesheet" href="css/biapp20.css">
 <body>
-<div class="w3-sidebar w3-theme-d4 w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+<div class="w3-sidebar w3-theme w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
   <a href="https://niborgit.github.io/nibor/BiApp20.html" class="w3-bar-item w3-button">English NT</a>
   <a href="https://niborgit.github.io/nibor/BiAppOT20.html" class="w3-bar-item w3-button">English OT</a>
-  <a href="https://niborgit.github.io/nibor/BiAppEs20.html" class="w3-bar-item w3-button">Spanish NT</a> 
-  <a href="https://niborgit.github.io/nibor/BiApp20NTV.html" class="w3-bar-item w3-button">Spanish NTV</a> 
+  <a href="https://niborgit.github.io/nibor/BiAppEs20.html" class="w3-bar-item w3-button">Spanish NT</a>
+  <a href="https://niborgit.github.io/nibor/BiAppNTV.html" class="w3-bar-item w3-button">Spanish NTV</a>
 </div>
+
 <div class="w3-bar w3-theme">
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green w3-left" onClick="w3_open()">
-      <i class="fas fa-th-list"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green">
-      <i class="fa fa-home"></i></a>  
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green" onclick="w3_open();">
+    <i class="fa fa-list"></i>
+  <a href="https://niborgit.github.io/nibor/BiAppOT20.html" class="w3-bar-item w3-xlarge w3-green">
+      <i class="fa fa-home"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showSearch()">
+      <i class="fa fa-search"></i></a> 
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showBooks()">
       <i class="fa fa-book"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="clearAll()">
     <i class="fa fa-eraser"></i></a>       
     <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showFilter()">
         <i class="fa fa-filter"></i></a>         
-  <a href="#" class="w3-bar-item w3-button  w3-xlarge" onclick="showSearch()">
-      <i class="fa fa-search"></i></a> 
-  <a href="#" class="w3-bar-item w3-button w3-xlarge" id="header">
+  <a href="#" class="w3-bar-item w3-button w3-rest w3-xlarge" id="header">
         <i>Bi</i></a>         
 </div> 
 
