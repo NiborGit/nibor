@@ -33,7 +33,7 @@
 </select>
 </div>	
 <div class="w3-container">
-<img src="https://maps.googleapis.com/maps/api/staticmap?center=42.3999%2c%20-71.0385&zoom=16&size=400x400&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY" id="gmap" class="w3-container"></img>
+<img src="#" id="gmap" class="w3-container"></img>
 </div>	
 <input type="hidden" id="fArea" value="" />
 <input type="hidden" id="fTopic" value="" />
@@ -83,7 +83,7 @@ function reviewSelect(){
 		fobj.innerHTML = fobj.innerHTML + "<pre>" + rdata + "</pre>";
 		var lat = d.attributes.latitude;
 		var lon = d.attributes.longitude;
-                var nsrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "%2c%20" + lon + "&zoom=15&size=300x300&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY";
+                var nsrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "%2c%20" + lon + "&zoom=15&size=300x300&markers=color:blue%7Clabel:Here%7C" + lat + "," + lon + "&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY";
                 myimg.src = nsrc;
 		
 		}
