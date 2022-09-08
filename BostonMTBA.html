@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Area List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
+
+<body >
+<div class="w3-bar w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-green w3-left">
+      <i class="fas fa-th-list"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-center" >      
+      <i class="fas fa-home"></i>       
+      </a>            
+  <a href="#" class="w3-bar-item w3-button  w3-xlarge w3-right"  >
+      <i class="fas fa-search" onclick="showSearch()"></i></a>   
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-right" >
+        <i class="fas fa-filter" onclick="showFilter()"></i></a>             
+</div> 
+
+<div class="w3-container w3-theme w3-hide" id="fmFilter">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="filter" onkeyup="searchMe();" placeholder="Filter..."/> 
+</div>
+<div class="w3-container w3-theme w3-hide" id="fmSearch">
+<input class="w3-input w3-theme w3-hover-white" type="text" id="searchAll" placeholder="Search..."/>           
+</div> 
+<div id="review" class="w3-theme w3-panel">
+</div>
+<label for="sbody">Choose a vehicle:</label>
+<select id="sbody" name="sbody" class="w3-container w3-large" onchange="reviewSelect()">
+</select>
+<div class="w3-container">
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=42.3999%2c%20-71.0385&zoom=16&size=400x400&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY" id="gmap" class="w3-container"></img>
+</div>
+<input type="hidden" id="fArea" value="" />
+<input type="hidden" id="fTopic" value="" />
+<div id="fFooter" class="w3-theme">
+<h5>nibor@github.com</h5>
+</div>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+var dataroutes=[];
+var vehicles=[] ; 
+
+w3.getHttpObject("https://api-v3.mbta.com/vehicles?api_key=036dd3e61e404eef90331fa0db427d9a", function(x) {
+	vehicles = JSON.parse(JSON.stringify(x.data));
+        getVehicles();
+	});
+function getVehicles() {
+w3.getHttpObject("https://api-v3.mbta.com/routes?api_key=036dd3e61e404eef90331fa0db427d9a", function(x) {
+	dataroutes = JSON.parse(JSON.stringify(x.data));        
+	showRoutes();
+	});
+}
+function showRoutes(){
+         console.log("in showRoutes");
+	 document.getElementById("sbody").innerHTML = '';
+         vehicles.forEach( function(doc) {
+         var d = doc;
+         var li = document.createElement("option");
+         //console.log(d.attributes.label);
+         li.label = d.attributes.label;
+         li.value = d.id;                               
+         li.className = "w3-container w3-theme-l3 w3-large w3-hover-white" ;
+	 document.getElementById("sbody").appendChild(li); 
+         });
+}
+function reviewSelect(){
+      var obj = document.getElementById("sbody");
+      var myimg = document.getElementById("gmap");
+      console.log(obj.options[obj.selectedIndex].text);
+      var fobj = document.getElementById("review");
+      fobj.innerText = "You Selected: " + obj.options[obj.selectedIndex].value ;  
+        vehicles.forEach( function(doc) {
+	     var d = doc;
+             if(d.attributes.label == obj.options[obj.selectedIndex].label){
+		var data = JSON.stringify(d.attributes);
+                var rdata = data.replace(/,/g, "\r\n");
+		fobj.innerHTML = fobj.innerHTML + "<pre>" + rdata + "</pre>";
+		var lat = d.attributes.latitude;
+		var lon = d.attributes.longitude;
+                var nsrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "%2c%20" + lon + "&zoom=15&size=400x400&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY";
+                myimg.src = nsrc;
+		
+		}
+        });
+                
+}
+function showFilter(){
+   var obj = document.getElementById("fmFilter");
+    obj.classList.toggle('w3-hide');
+}
+function showSearch(){
+    var obj = document.getElementById("fmSearch");
+     obj.classList.toggle('w3-hide');     
+}
+function searchMe() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('filter');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById('contentbody');
+  li = ul.getElementsByTagName('div');
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {    
+    txtValue = li[i].textContent || li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+ }
+}
+</script>
+<!--
+https://maps.googleapis.com/maps/api/staticmap?center=42.3999%2c%20-71.0385&zoom=16&size=400x400&key=AIzaSyDJjs7wc3qASGTu9h1FrBO5bJ-7x2vZClY
+-->
+
+</body>
+</html>
