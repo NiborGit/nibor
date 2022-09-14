@@ -23,13 +23,12 @@
 <footer id="fFooter" >
 <h5>nibor@github.com</h5>
 </footer>
-<script src="https://www.w3schools.com/lib/w3.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.1.0/base64.min.js"></script>                                                 
+<script src="https://www.w3schools.com/lib/w3.js"></script>                                                
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
         function handleCredentialResponse(response) {
           console.log("Encoded JWT ID token: " + response.credential);
-          var responsePayload = base64.decode(response.credential);
+          var responsePayload = atob(response.credential);
          console.log(JSON.stringify(responsePayload));
          console.log("ID: " + responsePayload.sub);
          console.log('Full Name: ' + responsePayload.name);
