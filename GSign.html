@@ -29,7 +29,7 @@
         function handleCredentialResponse(response) {
         console.log("Encoded JWT ID token: " + response.credential);
         var guri = "https://oauth2.googleapis.com/tokeninfo?id_token="+response.credential;
-  w3.getHttpObject(guri, function(x) {
+  w3.getHttpData(guri, function(x) {
          var w = JSON.parse(x);
 	       console.log(JSON.stringify(x));
          console.log("ID: " + w.sub);
