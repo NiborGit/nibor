@@ -24,20 +24,7 @@ function showSearch(){
 </div> 
 <!--https://developers.google.com/identity/gsi/web/reference/html-reference#element_with_id_g_id_onload
 -->
-<div id="g_id_onload"
-         data-client_id="490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com"
-         data-login_uri="https://niborgit.github.io/nibor"
-         data-auto_prompt="false">
-      </div>
-      <div class="g_id_signin"
-         data-type="standard"
-         data-size="large"
-         data-theme="outline"
-         data-text="sign_in_with"
-         data-shape="rectangular"
-         data-logo_alignment="left">
-      </div>
-
+ <div id="buttonDiv"></div> 
 
 
 <div id="fHeader"></div>
@@ -48,17 +35,23 @@ function showSearch(){
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-  window.onload = function () {
-    google.accounts.id.initialize({
-      client_id: '490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com',
-      callback: handleCredentialResponse
-    });
-    google.accounts.id.prompt();
-  };
+        function handleCredentialResponse(response) {
+          console.log("Encoded JWT ID token: " + response.credential);
+        }
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+          );
+          google.accounts.id.prompt(); // also display the One Tap dialog
+        }
 function handleCredentialResponse(){
-
+   console.log("handle response");  
 }
-</script>
-</script> 
+</script>   
 </body>
 </html>
