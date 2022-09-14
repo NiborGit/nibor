@@ -5,16 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
-<script>
-function showFilter(){
-   var obj = document.getElementById("fmFilter");
-    obj.classList.toggle('w3-hide');
-}
-function showSearch(){
-    var obj = document.getElementById("fmSearch");
-     obj.classList.toggle('w3-hide');     
- }
-</script>
+
 <body class="w3-theme w3-mobile" >
 <div class="w3-bar ">
   <a href="#" class="w3-bar-item w3-button w3-large">
@@ -48,10 +39,7 @@ function showSearch(){
             { theme: "outline", size: "large" }  // customization attributes
           );
           google.accounts.id.prompt(); // also display the One Tap dialog
-        }
-function handleCredentialResponse(){
-   console.log("handle response");  
-}
+       }
 </script>   
 </body>
 </html>
