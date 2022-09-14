@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Area List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
+<script>
+function showFilter(){
+   var obj = document.getElementById("fmFilter");
+    obj.classList.toggle('w3-hide');
+}
+function showSearch(){
+    var obj = document.getElementById("fmSearch");
+     obj.classList.toggle('w3-hide');     
+ }
+</script>
+<body class="w3-theme w3-mobile" >
+<div class="w3-bar ">
+  <a href="#" class="w3-bar-item w3-button w3-large">
+      <i class="fa fa-list"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-large" onclick="signOut();">
+      <i class="fa fa-book"></i>Sign out</a>
+</div> 
+<!--https://developers.google.com/identity/gsi/web/reference/html-reference#element_with_id_g_id_onload
+-->
+<div id="g_id_onload"
+         data-client_id="490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com"
+         data-login_uri="https://niborgit.github.io/nibor"
+         data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-shape="rectangular"
+         data-logo_alignment="left">
+      </div>
+
+
+
+<div id="fHeader"></div>
+<div id="fBody"></div>
+<footer id="fFooter" >
+<h5>nibor@github.com</h5>
+</footer>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: '490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com',
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.prompt();
+  };
+function handleCredentialResponse(){
+
+}
+</script>
+</script> 
+</body>
+</html>
