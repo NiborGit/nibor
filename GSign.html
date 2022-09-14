@@ -29,7 +29,7 @@
         function handleCredentialResponse(response) {
           console.log("Encoded JWT ID token: " + response.credential);
           var responsePayload = atob(response.credential);
-         console.log(JSON.stringify(responsePayload);
+         console.log(JSON.stringify(responsePayload));
          console.log("ID: " + responsePayload.sub);
          console.log('Full Name: ' + responsePayload.name);
          console.log('Given Name: ' + responsePayload.given_name);
