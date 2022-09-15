@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Say hello using the People API</title>
+    <meta charset='utf-8' />
+  </head>
+  <body onload="showUri()">
+    <div id="fBody"></div>
+   <script>
+     function showUri(){
+      var eid = document.getElementById('fBody');
+      eid.innerHTML = window.location.href;
+       var parser = document.createElement('a');
+parser.href = window.location.href;
+console.log(parser.protocol); // => "http:"
+console.log(parser.host);     // => "example.com:3000"
+console.log(parser.hostname); // => "example.com"
+console.log(parser.port);     // => "3000"
+console.log(parser.pathname); // => "/pathname/"
+console.log(parser.search);     // => "#hash"
+console.log(parser.hash);   // => "?search=test"
+       var hash = parser.hash.substr(1);
+
+var result = hash.split('&').reduce(function (res, item) {
+    var parts = item.split('=');
+    res[parts[0]] = parts[1];
+    return res;
+}, {});
+       console.log(result);
+     }
+    </script>
+      </body>
+</html>
