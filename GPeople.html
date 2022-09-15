@@ -4,11 +4,13 @@
     <title>Say hello using the People API</title>
     <meta charset='utf-8' />
   </head>
-  <body>
+  <body onload="showUri()">
     <div id="fbody"></div>
    <script>
-     var eid = document.getElementById('fBody');
-eid.innerHTML = window.location.href;
+     function showUri(){
+      var eid = document.getElementById('fBody');
+      eid.innerHTML = window.location.href;
+     }
     </script>
       </body>
 </html>
