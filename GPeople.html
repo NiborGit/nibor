@@ -10,6 +10,17 @@
      function showUri(){
       var eid = document.getElementById('fBody');
       eid.innerHTML = window.location.href;
+       var parser = document.createElement('a');
+parser.href = window.location.href;
+console.log(parser.protocol); // => "http:"
+console.log(parser.host);     // => "example.com:3000"
+console.log(parser.hostname); // => "example.com"
+console.log(parser.port);     // => "3000"
+console.log(parser.pathname); // => "/pathname/"
+console.log(parser.state);     // => "#hash"
+console.log(parser.access_token);   // => "?search=test"
+console.log(parser.origin);   // => "http://example.com:3000"
+console.log(parser.scope);
      }
     </script>
       </body>
