@@ -19,6 +19,14 @@ console.log(parser.port);     // => "3000"
 console.log(parser.pathname); // => "/pathname/"
 console.log(parser.search);     // => "#hash"
 console.log(parser.hash);   // => "?search=test"
+       var hash = parser.hash.substr(1);
+
+var result = hash.split('&').reduce(function (res, item) {
+    var parts = item.split('=');
+    res[parts[0]] = parts[1];
+    return res;
+}, {});
+       console.log(result);
      }
     </script>
       </body>
