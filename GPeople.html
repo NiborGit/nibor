@@ -59,8 +59,9 @@ function getTasks(taskListId) {
     if (params && params['access_token']) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET',
-          'https://www.googleapis.com/tasks/v1/users/@me/lists/' + taskListId + '/tasks?' +
-          'access_token=' + params['access_token']);
+          'https://www.googleapis.com/tasks/v1/users/@me/lists/' + taskListId + '/tasks' );
+          //'access_token=' + params['access_token']);
+      xhr.setRequestHeader("Authorization","Bearer " + params['access_token']);
       xhr.onreadystatechange = function (e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.response);
