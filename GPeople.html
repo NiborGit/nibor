@@ -93,7 +93,8 @@ function getRows(storeName) {
         console.log("getRows done");
        // var vcarpet = document.getElementById('carpet');
        // vcarpet.innerHTML = JSON.stringify(rdata);
-      rObj.forEach(function(doc, z) {
+       var rItems = rObj.items;
+      rItems.forEach(function(doc, z) {
        var d = doc;                                     
           var li = document.createElement("div");
           li.id = d.id
