@@ -29,6 +29,9 @@
       xhr.onreadystatechange = function (e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.response);
+          var rObj = JSON.parse(xhr.response);
+          saveRows('gTaskLists',rObj);
+          getRows('gTaskLists');
         } else if (xhr.readyState === 4 && xhr.status === 401) {
           // Token invalid, so prompt for user permission.
           oauth2SignIn();
@@ -73,7 +76,26 @@
     document.body.appendChild(form);
     form.submit();
   }
+  
+ /********** local storage ******************/
+
+function getRows(storeName) { 
+        var rdata = window.localStorage.getItem(storeName);
+        console.log('retrievedObject: ', JSON.parse(rdata));         
+        console.log("getRows done");
+        var vcarpet = document.getElementById('carpet');
+        vcarpet.innerHTML = JSON.stringify(rdata);
+ }
+function saveRows(storeName, obj){  
+        window.localStorage.setItem(storeName, JSON.stringify(obj)); 
+        console.log("save done"); 
+        getRows();
+}
+
+  
 </script>
 
 <button onclick="getTaskLists();">Get Task Lists</button>
+<div id="carpet"></div>
+
 </body></html>
