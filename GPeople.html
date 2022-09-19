@@ -69,7 +69,7 @@ function getTasks(taskListId) {
           console.log(xhr.response);
           var rObj = JSON.parse(xhr.response);
           saveRows('gTasks',rObj);
-          getRows('gTasks');
+          getTaskRows('gTasks');
         } else if (xhr.readyState === 4 && xhr.status === 401) {
           // Token invalid, so prompt for user permission.
           oauth2SignIn();
@@ -115,7 +115,6 @@ function getTasks(taskListId) {
   }
   
  /********** local storage ******************/
-
 function getRows(storeName) { 
         var rdata = window.localStorage.getItem(storeName);
         var rObj = JSON.parse(rdata);
@@ -135,12 +134,31 @@ function getRows(storeName) {
          };
           li.className = "w3-theme-l5 w3-xlarge w3-hover-white" ;
           li.appendChild(t);
-          document.getElementById("carpet").appendChild(li);
-         
-      });
-
-    
+          document.getElementById("carpet").appendChild(li);         
+      });   
  }
+function getTaskRows(storeName) { 
+        var rdata = window.localStorage.getItem(storeName);
+        var rObj = JSON.parse(rdata);
+        console.log('retrievedObject: ', JSON.parse(rdata));         
+        console.log("getRows done");
+        var vcarpet = document.getElementById('carpet');
+        vcarpet.innerHTML = '';
+       var rItems = rObj.items;
+      rItems.forEach(function(doc, z) {
+       var d = doc;                                     
+          var li = document.createElement("div");
+          li.id = d.id          
+          var t = document.createTextNode(d.title) ;                       
+          li.onclick = function(){                        
+            console.log(this.getAttribute('id'));            
+         };
+          li.className = "w3-theme-l5 w3-xlarge w3-hover-white" ;
+          li.appendChild(t);
+          document.getElementById("carpet").appendChild(li);         
+      });
+    
+ } 
 function saveRows(storeName, obj){  
         window.localStorage.setItem(storeName, JSON.stringify(obj)); 
         console.log("save done"); 
