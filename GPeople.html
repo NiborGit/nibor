@@ -62,6 +62,14 @@ function getTasks(taskListId) {
       xhr.open('GET',
           'https://www.googleapis.com/tasks/v1/users/@me/lists/' + taskListId + '/tasks?key=' + YOUR_APIKEY );
           //'access_token=' + params['access_token']);
+      xhr.setRequestHeader("Origin","https://niborgit.github.io");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-length","0");
+      xhr.setRequestHeader("Access-Control-Allow-Origin","https://niborgit.github.io");
+      xhr.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
+      xhr.setRequestHeader("Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token");
+
       xhr.setRequestHeader("Authorization","Bearer " + params['access_token']);
       xhr.onreadystatechange = function (e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
