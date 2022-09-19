@@ -1,4 +1,11 @@
-<html><head></head><body>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
+ 
+<body>
+<script src="https://www.w3schools.com/lib/w3.js"></script>  
 <script>
   var YOUR_CLIENT_ID = '490292809256-i3uacs5giokq01tbb8okdll1dio2u70v.apps.googleusercontent.com';
   var YOUR_REDIRECT_URI = window.location.href;
@@ -81,17 +88,30 @@
 
 function getRows(storeName) { 
         var rdata = window.localStorage.getItem(storeName);
+        var rObj = JSON.parse(rdata);
         console.log('retrievedObject: ', JSON.parse(rdata));         
         console.log("getRows done");
-        var vcarpet = document.getElementById('carpet');
-        vcarpet.innerHTML = JSON.stringify(rdata);
+       // var vcarpet = document.getElementById('carpet');
+       // vcarpet.innerHTML = JSON.stringify(rdata);
+      rObj.forEach(function(doc, z) {
+       var d = doc;                                     
+          var li = document.createElement("div");
+          li.id = d.id
+          li.name = d.selfLink                  
+          var t = document.createTextNode(d.title) ;                
+          li.className = "w3-theme-l5 w3-xlarge w3-hover-white" ;
+          li.appendChild(t);
+          document.getElementById("carpet").appendChild(li);
+         }
+      });
+
+    
  }
 function saveRows(storeName, obj){  
         window.localStorage.setItem(storeName, JSON.stringify(obj)); 
         console.log("save done"); 
         getRows();
 }
-
   
 </script>
 
