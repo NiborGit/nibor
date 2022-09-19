@@ -111,7 +111,7 @@ function getRows(storeName) {
 function saveRows(storeName, obj){  
         window.localStorage.setItem(storeName, JSON.stringify(obj)); 
         console.log("save done"); 
-        getRows();
+        getRows(storeName);
 }
   
 </script>
