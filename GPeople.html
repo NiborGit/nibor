@@ -49,7 +49,29 @@
       oauth2SignIn();
     }
   }
-
+function getTasks(taskListId) {
+    var params = JSON.parse(localStorage.getItem('niborRef'));
+    if (params && params['access_token']) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET',
+          'https://www.googleapis.com/tasks/v1/users/@me/lists/' + taskListId + '/tasks?' +
+          'access_token=' + params['access_token']);
+      xhr.onreadystatechange = function (e) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.response);
+          var rObj = JSON.parse(xhr.response);
+          saveRows('gTasks',rObj);
+          getRows('gTasks');
+        } else if (xhr.readyState === 4 && xhr.status === 401) {
+          // Token invalid, so prompt for user permission.
+          oauth2SignIn();
+        }
+      };
+      xhr.send(null);
+    } else {
+      oauth2SignIn();
+    }
+  }
   /*
    * Create form to request access token from Google's OAuth 2.0 server.
    */
@@ -97,12 +119,11 @@ function getRows(storeName) {
       rItems.forEach(function(doc, z) {
        var d = doc;                                     
           var li = document.createElement("div");
-          li.id = d.id
-          li.name = d.selfLink                  
-          var t = document.createTextNode(d.title) ;             
-          li.setAttribute('name',d.selfLink);
+          li.id = d.id          
+          var t = document.createTextNode(d.title) ;                       
           li.onclick = function(){                        
-            console.log(this.getAttribute('name'));            
+            console.log(this.getAttribute('id')); 
+            getTasks(this.getAttribute('id')); 
          };
           li.className = "w3-theme-l5 w3-xlarge w3-hover-white" ;
           li.appendChild(t);
