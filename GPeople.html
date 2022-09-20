@@ -60,7 +60,7 @@ function getTasks(taskListId) {
     if (params && params['access_token']) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET',
-          'https://tasks.googleapis.com/tasks/v1/lists/' + taskListId + '/tasks?key=' + YOUR_APIKEY  );
+          'https://tasks.googleapis.com/tasks/v1/lists/' + taskListId + '/tasks?showHidden=true&key=' + YOUR_APIKEY  );
           //'access_token=' + params['access_token']);            
       xhr.setRequestHeader("Accept", "application/json"); 
       xhr.setRequestHeader("Authorization","Bearer " + params['access_token']);
