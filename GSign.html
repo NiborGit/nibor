@@ -27,6 +27,7 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
         function handleCredentialResponse(response) {
+        console.log(JSON.stringify(response));						    
         console.log("Encoded JWT ID token: " + response.credential);
         var guri = "https://oauth2.googleapis.com/tokeninfo?id_token="+response.credential;
   w3.getHttpData(guri, function(x) {
