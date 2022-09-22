@@ -149,7 +149,11 @@ function getTaskRows(storeName) {
        var d = doc;                                     
           var li = document.createElement("div");
           li.id = d.id          
-          var t = document.createTextNode(d.title) ;                       
+          var t;  // = document.createTextNode(d.title) ;                       
+          if (d.hidden == true) { li.innerHTML = '<del>' + d.title + '</del>';
+          } esle {
+           t = document.createTextNode(d.title) ;
+          }
           li.onclick = function(){                        
             console.log(this.getAttribute('id'));            
          };
