@@ -150,7 +150,9 @@ function getTaskRows(storeName) {
           var li = document.createElement("div");
           li.id = d.id          
           var t;  // = document.createTextNode(d.title) ;                       
-          if (d.hidden == true) { li.innerHTML = '<del>' + d.title + '</del>';
+          if (d.hidden == true) { 
+               li.innerHTML = '<del>' + d.title + '</del>';
+               t = document.createTextNode('');
           } else {
            t = document.createTextNode(d.title) ;
           }
