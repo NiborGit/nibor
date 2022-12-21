@@ -44,7 +44,7 @@ function showChapters(book) {
             var obj = this.innerHTML;
             var fobj = document.getElementById("myULchapters");
             fobj.value = obj;     
-      		getData(book,fobj.value);
+      		getData(book,d.ShortName);
       };
       li.appendChild(t); 
       document.getElementById("myULchapters").appendChild(li);
