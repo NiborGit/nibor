@@ -28,6 +28,7 @@ function showOTBooks(){
   document.getElementById("myULbooks").innerHTML = '';
   document.getElementById("myULchapters").innerHTML = ''; 
   document.getElementById("myULverses").innerHTML = '';
+  document.getElementById("back-top").style.display = "none";
     var obj = books;
     document.getElementById("myULbooks").innerHTML = "";
     obj.forEach(function(doc, z) {   
@@ -35,7 +36,7 @@ function showOTBooks(){
       if (d.BookKey.substring(2,3) == 'O') {
       var li = document.createElement("div");
       var t = document.createTextNode(d.BookName) ;                
-      li.className = "w3-card w3-col s6 w3-theme-d2 w3-center w3-large w3-hover-khaki" ;
+      li.className = "w3-card w3-col s6 w3-theme-d2 w3-center w3-xlarge w3-hover-khaki" ;
       li.onclick = function(){ 
             var obj = this.innerHTML;
             var fobj = document.getElementById("myULbooks");
@@ -51,6 +52,7 @@ function showNTBooks(){
   document.getElementById("myULbooks").innerHTML = '';
   document.getElementById("myULchapters").innerHTML = ''; 
   document.getElementById("myULverses").innerHTML = '';
+  document.getElementById("back-top").style.display = "none";
     var obj = books;
     document.getElementById("myULbooks").innerHTML = "";
     obj.forEach(function(doc, z) {   
@@ -59,7 +61,7 @@ function showNTBooks(){
       if (ptr == 'N') {
       var li = document.createElement("div");
       var t = document.createTextNode(d.BookName) ;                
-      li.className = "w3-card w3-col s6 w3-theme-d2 w3-center w3-large w3-hover-khaki" ;
+      li.className = "w3-card w3-col s6 w3-theme-d2 w3-center w3-xlarge w3-hover-khaki" ;
       li.onclick = function(){ 
             var obj = this.innerHTML;
             var fobj = document.getElementById("myULbooks");
@@ -96,6 +98,7 @@ function showChapters(book) {
 function getData(book, chap){
    document.getElementById("myULbooks").innerHTML = '';
    document.getElementById("myULchapters").innerHTML = ''; 
+   document.getElementById("back-top").style.display = "block";
 
    pChap = chap
    pBook = book
@@ -153,3 +156,4 @@ function w3_close() {
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 </body>
 </html>
+
