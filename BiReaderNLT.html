@@ -173,26 +173,27 @@ function w3_close() {
   <a href="https://niborgit.github.io/nibor/BiReaderNLT.html" class="w3-bar-item w3-button">NLT Reader</a>
 </div>
 <div id="myBar" class="w3-bar w3-theme-d4 w3-xlarge">
-<p id="back-left" >
-<a href="#left" class="w3-bar-item w3-circle w3-theme-d1 w3-left" style="position:relative;left:0px;" onclick="prevChap()">
-<i class="fas fa-angle-left"></i></a>
-</p>
-<p id="back-right" >
-<a href="#right" class="w3-bar-item w3-circle w3-theme-d1 w3-right" style="position:relative;right:0px;" onclick="nextChap()">
-<i class="fas fa-angle-right"></i></a>
-</p>
   <a href="#" class="w3-bar-item w3-button w3-green w3-left" onClick="w3_open()">
-      <i class="fas fa-th-list"></i></a>
+      <i class="fas fa-th-list w3-xlarge"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-center" onClick="showOTBooks()">      
-      <i class="fas fa-book">&nbsp;OT</i>       
+      <i class="fas fa-book w3-xlarge">&nbsp;OT</i>       
       </a>            
   <a href="#" class="w3-bar-item w3-button w3-center" onClick="showNTBooks()">      
-      <i class="fas fa-book">&nbsp;NT</i>       
+      <i class="fas fa-book w3-xlarge">&nbsp;NT</i>       
       </a>               
                
 </div> 
 
-<div id="fHeader" class="w3-theme"></div>
+<div id="fHeader" class="w3-container">
+<p id="back-left" >
+<a href="#left" class="w3-bar-item w3-circle w3-large w3-theme-action w3-left" style="position:relative;left:0px;" onclick="prevChap()">
+<i class="fas fa-angle-left"></i></a>
+</p>
+<p id="back-right" >
+<a href="#right" class="w3-bar-item w3-circle w3-large w3-theme-action w3-right" style="position:relative;right:0px;" onclick="nextChap()">
+<i class="fas fa-angle-right"></i></a>
+</p>
+</div>
 <div id="fBody" class="w3-theme"></div>
 <div id="myULbooks"></div>
 <div id="myULchapters"></div>
