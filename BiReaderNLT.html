@@ -119,7 +119,7 @@ function getData(book, chap){
    pBook = selectedBook//book
 
    var surl = "https://api.nlt.to/api/passages?ref=";
-   var eurl = "&key=22b24473-b78b-46a1-8821-a85249c23db2"
+   var eurl = "&version=NLT&key=22b24473-b78b-46a1-8821-a85249c23db2"
    var furl = surl + encodeURI(pBook) + "." + pChap + eurl;
    console.log(furl);
    w3.getHttpData(furl, myFunction);
@@ -133,7 +133,7 @@ function prevChap(){
      selectedChapter = pChap 
      } 
    var surl = "https://api.nlt.to/api/passages?ref=";
-   var eurl = "&key=22b24473-b78b-46a1-8821-a85249c23db2"
+   var eurl = "&version=NLT&key=22b24473-b78b-46a1-8821-a85249c23db2"
    var furl = surl + encodeURI(pBook) + "." + pChap + eurl;
    console.log(furl);
    w3.getHttpData(furl, myFunction);
@@ -146,7 +146,7 @@ function nextChap(){
     } else { selectedChapter = pChap;
     } 
    var surl = "https://api.nlt.to/api/passages?ref=";
-   var eurl = "&key=22b24473-b78b-46a1-8821-a85249c23db2"
+   var eurl = "&version=NLT&key=22b24473-b78b-46a1-8821-a85249c23db2"
    var furl = surl + encodeURI(pBook) + "." + pChap + eurl;
    console.log(furl);
    w3.getHttpData(furl, myFunction);
