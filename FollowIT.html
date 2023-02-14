@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>FollowIt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>
+<script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.0/dist/pouchdb.min.js"></script>
+<script>
+let currEntry={"FollowIT":[]};
+//var db; 
+var dataDate;
+
+var areas = [{"name":"Email","image":"fa-envelope"},{"name":"Meeting","image":"fa-users"},
+{"name":"Phone","image":"fa-mobile"},
+{"name":"Coding","image":"fa-code"},
+{"name":"Chat","image":"fa-comments"},
+{"name":"Maintenance","image":"fa-wrench"},
+{"name":"Urgent","image":"fa-first-aid"},
+{"name":"Break","image":"fa-coffee"},
+{"name":"Vacation","image":"fa-umbrella"},
+{"name":"Travel","image":"fa-plane"},
+{"name":"Ship","image":"fa-truck"},
+{"name":"Training","image":"fa-chalkboard"}];
+
+var times = [{"name":"15 min","image":"fa-clock","num":"15"},
+{"name":"30 min","image":"fa-clock","num":"30"},
+{"name":"1 hour","image":"fa-clock","num":"60"},
+{"name":"2 hours","image":"fa-clock","num":"120"},
+{"name":"Half Day","image":"fa-clock","num":"3600"},
+{"name":"All Day","image":"fa-clock","num":"7200"}]
+
+function showAreas(){          
+    var obj = areas;
+    document.getElementById("body").innerHTML = "";
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var t = document.createElement("div");
+      t.className = "w3-large";
+      var tm = document.createTextNode(d.name);
+      t.appendChild(tm);
+      li.className = "fas w3-round w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-grey " + d.image ;
+      li.id = d.name;
+      li.onclick = function(){ 
+            var obj = this;
+            var fobj = document.getElementById("fArea");
+            fobj.value = obj.id                 
+      		showTopics(); 
+      };
+      li.appendChild(t);        
+      document.getElementById("body").appendChild(li);      
+    });
+}   
+function showTopics(){          
+    var obj = times;
+    document.getElementById("body").innerHTML = "";
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var t = document.createElement("div");
+      t.className = "w3-large";
+      var tm = document.createTextNode(d.name);  
+      t.appendChild(tm);
+      li.id = d.name;
+      li.className = "fas w3-theme w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-teal " + d.image ;
+      li.onclick = function(){ 
+            var obj = this;
+            var fobj = document.getElementById("fTopic");
+            fobj.value = obj.id            
+            document.getElementById("body").innerHTML = "";
+            
+            var aobj = document.getElementById("fArea");
+            var strobj = {"topic":"","time":"","id":""};
+            strobj.topic = aobj.value;
+            strobj.time = obj.id;
+            strobj.id = new Date().toISOString();
+            //var dataObj = JSON.parse(strobj);
+            currEntry['FollowIT'].push(strobj);   
+            showEntry();
+      };
+      li.appendChild(t);        
+      document.getElementById("body").appendChild(li);      
+    });    
+}  
+function showEntry(){	    
+    var cobj = currEntry['FollowIT'];
+    document.getElementById("body").innerHTML = "";
+    cobj.forEach(function(doc) {                        
+              var d = doc;
+      		  var li = document.createElement("div");      		  
+      		  li.className = "w3-container w3-large s6 w3-leftbar w3-animate-bottom ";
+              li.innerHTML = "<div class='w3-left'" 
+                           + ">" 
+                           + d.topic + "</div> "
+                           + "<div class='w3-right'>" 
+                           +  d.time+ "</div>"
+                           + "<div id='" + d.id + "' class='w3-hide'>" 
+                           +  d.id+ "</div>";
+             li.ondblclick = function(){ 
+                     var obj = d.id;
+                    removeItem(obj); 
+                   };              
+             document.getElementById("body").appendChild(li);
+     });              
+}
+function removeItem(i){
+  var row = i;
+  alert(row);
+  var cobj = currEntry['FollowIT'];
+  var x=0;
+  cobj.forEach(function(doc) {           
+              var d = doc;
+              if (d.id == row) {
+              	currEntry['FollowIT'].splice(x,1);
+                showEntry();
+              }
+              x++;
+  });            
+}
+/*function showCal(){
+    //var obj = document.getElementById("inputdate");    
+    //obj.classList.toggle('w3-hide');     
+    document.getElementById('id01').style.display='block';
+ }*/
+function setDate(){
+	var obj = document.getElementById("inputdate");
+    //document.getElementById("foot").innerHTML = obj.value;
+    dataDate = obj.value;
+    currEntry ={"FollowIT":[]};
+    getData(obj.value);
+}
+function setToday(){   
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if( dd < 10) { dd = '0'+dd }; 
+  if( mm < 10) { mm = '0'+mm };
+  today = yyyy + '-' + mm + '-' + dd;  
+  document.getElementById("inputdate").value = today; 
+  dataDate = today;
+  getRow(dataDate);
+  //document.getElementById("foot").innerHTML = today;   
+}
+function saveData(){
+  console.log(JSON.stringify(currEntry));
+  //alert(JSON.stringify(currEntry));
+  alert(dataDate);
+  addRow(dataDate);
+}
+function getData(val){
+    getRow(val);
+}
+</script>
+<body class="w3-theme" onload="setToday();showAreas()">
+
+<div class="w3-bar w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-large w3-theme">
+      <i class="fas fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-large" onclick="showAreas();">
+      <i class="fas fa-home"></i></a>  
+      
+<a href="#" class="w3-bar-item w3-button w3-large" >
+        <i class="fas fa-list-alt" onclick="showEntry();"></i></a>           
+<a href="#" class="w3-bar-item w3-button w3-large" >
+        <i class="far fa-save" onclick="saveData();">
+</i></a> 
+<!--<span id="foot" class="w3-bar-item"></span>-->
+      <input id="inputdate" class="w3-right w3-bar-item" type="date" onchange="setDate();" >       
+</div> 
+
+<div id="body"></div>
+
+<input type="hidden" id="fArea" value="" />
+<input type="hidden" id="fTopic" value="" />
+<div id="msg" class="w3-container"></div>
+<div id="footbar" class="w3-bar w3-theme">
+nibor@github.com      
+</div>
+
+
+<script>
+var db = new PouchDB('FollowIT');
+  
+function getDbInfo(){
+    db.info().then(function (info) {
+        console.log(info);
+        var msg = document.getElementById("msg");
+        msg.innerHTML = JSON.stringify(info);
+      });
+      getRows();
+}
+function addRow(ddate){
+    var obj = JSON.stringify(currEntry);
+    var entry = {
+      _id: ddate,
+      doc: obj       
+    };   
+    
+    db.put(entry, function callback(err, result) {
+      if (!err) {
+        console.log('Successfully posted a activity list!');
+        //alert('There was an issue!' + err);
+      }
+    });
+}    
+function getRow(datadate){
+  if(datadate !== 'undefined'){
+  db.get(datadate).then(function (doc) {
+      var obj = doc.doc;
+      
+      currEntry = JSON.parse(obj);
+      showEntry();
+      
+      }); 
+  } else {
+      alert("No record found.");
+  }
+}
+function removeRow(id){
+  //var id = 
+  if(id !== undefined){    
+  db.get(id).then(function (doc) {
+      db.remove(doc);
+    });      
+  } else {
+      alert("No record row selected to delete.");
+  }
+}
+function getRows(){   
+  db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
+       var documents =  doc.rows ;  
+       documents.forEach(function(docx) {
+          var ent = docx.doc;                                           
+          var msg = document.getElementById("msg");
+          msg.innerHTML = msg.innerHTML + JSON.stringify(ent);         
+        }); 
+    });          
+}
+</script>
+
+</body>
+
+</html>
+
+
