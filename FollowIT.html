@@ -36,14 +36,16 @@ var times = [{"name":"15 min","image":"fa-clock","num":"15"},
 {"name":"Half Day","image":"fa-clock","num":"3600"},
 {"name":"All Day","image":"fa-clock","num":"7200"}]
 
-function showAreas(){          
+function showAreas(){ 
+    var msg = document.getElementById("msg");
+    msg.innerHTML = "";
     var obj = areas;
     document.getElementById("body").innerHTML = "";
     obj.forEach(function(doc, z) {
       var d = doc;
       var li = document.createElement("div");
       var t = document.createElement("div");
-      t.className = "w3-large";
+      t.className = "w3-xlarge";
       var tm = document.createTextNode(d.name);
       t.appendChild(tm);
       li.className = "fas w3-round w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-grey " + d.image ;
@@ -95,7 +97,7 @@ function showEntry(){
     cobj.forEach(function(doc) {                        
               var d = doc;
       		  var li = document.createElement("div");      		  
-      		  li.className = "w3-container w3-large s6 w3-leftbar w3-animate-bottom ";
+      		  li.className = "w3-container w3-xlarge s6 w3-leftbar w3-animate-bottom ";
               li.innerHTML = "<div class='w3-left'" 
                            + ">" 
                            + d.topic + "</div> "
@@ -112,7 +114,8 @@ function showEntry(){
 }
 function removeItem(i){
   var row = i;
-  alert(row);
+  //alert(row);
+  console.log(row);
   var cobj = currEntry['FollowIT'];
   var x=0;
   cobj.forEach(function(doc) {           
@@ -130,7 +133,8 @@ function removeItem(i){
     document.getElementById('id01').style.display='block';
  }*/
 function setDate(){
-	var obj = document.getElementById("inputdate");
+    displayMsg("");
+	var obj = document.getElementById("inputdate");   
     //document.getElementById("foot").innerHTML = obj.value;
     dataDate = obj.value;
     currEntry ={"FollowIT":[]};
@@ -146,30 +150,32 @@ function setToday(){
   today = yyyy + '-' + mm + '-' + dd;  
   document.getElementById("inputdate").value = today; 
   dataDate = today;
-  getRow(dataDate);
+  getData(dataDate);
   //document.getElementById("foot").innerHTML = today;   
 }
 function saveData(){
   console.log(JSON.stringify(currEntry));
   //alert(JSON.stringify(currEntry));
-  alert(dataDate);
+  //alert(dataDate);
   addRow(dataDate);
+  var msg = document.getElementById("msg");
+  msg.innerHTML = " Data saved for " + dataDate + "";
 }
 function getData(val){
     getRow(val);
 }
 </script>
-<body class="w3-theme" onload="setToday();showAreas()">
+<body class="w3-theme" onload="setToday();showAreas();">
 
 <div class="w3-bar w3-theme">
-  <a href="#" class="w3-bar-item w3-button w3-large w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme">
       <i class="fas fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-large" onclick="showAreas();">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
       <i class="fas fa-home"></i></a>  
       
-<a href="#" class="w3-bar-item w3-button w3-large" >
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="fas fa-list-alt" onclick="showEntry();"></i></a>           
-<a href="#" class="w3-bar-item w3-button w3-large" >
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="far fa-save" onclick="saveData();">
 </i></a> 
 <!--<span id="foot" class="w3-bar-item"></span>-->
@@ -198,30 +204,62 @@ function getDbInfo(){
       getRows();
 }
 function addRow(ddate){
-    var obj = JSON.stringify(currEntry);
+    var eobj = JSON.stringify(currEntry);
     var entry = {
       _id: ddate,
-      doc: obj       
-    };   
-    
-    db.put(entry, function callback(err, result) {
+      doc: eobj       
+    }; 
+    var msg = document.getElementById("msg");
+ /*** new code ****/
+ db.get(ddate).catch(function (err) {
+  if (err.name === 'not_found') {
+     db.put(entry, function callback(err, result) {
       if (!err) {
-        console.log('Successfully posted a activity list!');
-        //alert('There was an issue!' + err);
+        console.log('Successfully posted a activity list!');        
+      } else { 
+        console.log('There was an issue! on entry' + err); 
       }
     });
+  } else { 
+    console.log(err);
+  }
+}).then(function (foundDoc) {
+  var update = {
+    _id: ddate,
+    doc: eobj,
+    _rev: foundDoc._rev
+  }
+  
+  db.put(update, function callback(err, result) {
+      if (!err) { console.log('Successfully updated activity list!');        
+      } else { console.log('There was an issue! on update' + err); }
+    });
+
+}).catch(function (err) {
+  console.log(err);
+});
+ /****  end ******/
+    
 }    
-function getRow(datadate){
-  if(datadate !== 'undefined'){
-  db.get(datadate).then(function (doc) {
+function getRow(ddate){
+  //alert(ddate);
+  if(ddate !== 'undefined'){
+  db.get(ddate).then(function (doc) {
       var obj = doc.doc;
-      
+      //alert(obj.length);
       currEntry = JSON.parse(obj);
-      showEntry();
-      
-      }); 
+      if(obj.length <= 15){ displayMsg("No entries."); 
+        showEntry();
+      } else {
+        showEntry();
+      }
+      }).catch(function (err) {
+         console.log(err);
+         displayMsg("Record(s) " + err.reason);
+         showEntry();
+     }); 
   } else {
-      alert("No record found.");
+      displayMsg("No record found.");
   }
 }
 function removeRow(id){
@@ -244,10 +282,12 @@ function getRows(){
         }); 
     });          
 }
+function displayMsg(mmm){
+     var msg = document.getElementById("msg");
+      msg.innerHTML = mmm;
+}
 </script>
 
 </body>
 
 </html>
-
-
