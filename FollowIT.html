@@ -17,24 +17,24 @@ let currEntry={"FollowIT":[]};
 //var db; 
 var dataDate;
 
-var areas = [{"name":"Email","image":"fa-envelope"},{"name":"Meeting","image":"fa-users"},
-{"name":"Phone","image":"fa-mobile"},
-{"name":"Coding","image":"fa-code"},
-{"name":"Chat","image":"fa-comments"},
-{"name":"Maintenance","image":"fa-wrench"},
-{"name":"Urgent","image":"fa-first-aid"},
-{"name":"Break","image":"fa-coffee"},
-{"name":"Vacation","image":"fa-umbrella"},
-{"name":"Travel","image":"fa-plane"},
-{"name":"Ship","image":"fa-truck"},
-{"name":"Training","image":"fa-chalkboard"}];
+var areas = [{"name":"Email","image":"fa-envelope fa-2x"},{"name":"Meeting","image":"fa-users fa-2x"},
+{"name":"Phone","image":"fa-mobile fa-2x"},
+{"name":"Coding","image":"fa-code fa-2x"},
+{"name":"Chat","image":"fa-comments fa-2x"},
+{"name":"Maintenance","image":"fa-wrench fa-2x"},
+{"name":"Urgent","image":"fa-first-aid fa-2x"},
+{"name":"Break","image":"fa-coffee fa-2x"},
+{"name":"Vacation","image":"fa-umbrella fa-2x"},
+{"name":"Travel","image":"fa-plane fa-2x"},
+{"name":"Ship","image":"fa-truck fa-2x"},
+{"name":"Training","image":"fa-chalkboard fa-2x"}];
 
-var times = [{"name":"15 min","image":"fa-clock","num":"15"},
-{"name":"30 min","image":"fa-clock","num":"30"},
-{"name":"1 hour","image":"fa-clock","num":"60"},
-{"name":"2 hours","image":"fa-clock","num":"120"},
-{"name":"Half Day","image":"fa-clock","num":"3600"},
-{"name":"All Day","image":"fa-clock","num":"7200"}]
+var times = [{"name":"15 min","image":"fa-clock fa-2x","num":"15"},
+{"name":"30 min","image":"fa-clock fa-2x","num":"30"},
+{"name":"1 hour","image":"fa-clock fa-2x","num":"60"},
+{"name":"2 hours","image":"fa-clock fa-2x","num":"120"},
+{"name":"Half Day","image":"fa-clock fa-2x","num":"3600"},
+{"name":"All Day","image":"fa-clock fa-2x","num":"7200"}]
 
 function showAreas(){ 
     var msg = document.getElementById("msg");
@@ -67,11 +67,11 @@ function showTopics(){
       var d = doc;
       var li = document.createElement("div");
       var t = document.createElement("div");
-      t.className = "w3-large";
+      t.className = "w3-xlarge";
       var tm = document.createTextNode(d.name);  
       t.appendChild(tm);
       li.id = d.name;
-      li.className = "fas w3-theme w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-teal " + d.image ;
+      li.className = "fas w3-theme w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-grey " + d.image ;
       li.onclick = function(){ 
             var obj = this;
             var fobj = document.getElementById("fTopic");
