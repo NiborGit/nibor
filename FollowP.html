@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>FollowIt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>
+<script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.0/dist/pouchdb.min.js"></script>
+<script>
+let currEntry={"FollowIT":[]};
+//var db; 
+var dataDate;
+
+var areas = [{"name":"Email","image":"fa-envelope fa-2x"},{"name":"Meeting","image":"fa-users fa-2x"},
+{"name":"Phone","image":"fa-mobile fa-2x"},
+{"name":"Preaching","image":"fa-bible fa-2x"},
+{"name":"Prayer","image":"fa-pray fa-2x"},
+{"name":"Visit Sick","image":"fa-bed fa-2x"},
+{"name":"Counseling","image":"fa-book-medical fa-2x"},
+{"name":"Discipleship","image":"fa-mug-hot fa-2x"},
+{"name":"Planning","image":"fa-dove fa-2x"},
+{"name":"Worship","image":"fa-guitar fa-2x"},
+{"name":"Teaching","image":"fa-chalkboard-teacher fa-2x"},
+{"name":"Training","image":"fa-chalkboard fa-2x"},
+{"name":"Study","image":"fa-glasses fa-2x"},
+{"name":"Time-off","image":"fa-umbrella fa-2x"},
+{"name":"Outreach","image":"fa-fish fa-2x"},
+{"name":"Missions","image":"fa-globe fa-2x"},
+{"name":"New Members","image":"fa-id-card fa-2x"}];
+
+var times = [{"name":"15 min","image":"fa-clock fa-2x","num":"15"},
+{"name":"30 min","image":"fa-clock fa-2x","num":"30"},
+{"name":"45 min","image":"fa-clock fa-2x","num":"45"},
+{"name":"1 hour","image":"fa-clock fa-2x","num":"60"},
+{"name":"2 hours","image":"fa-clock fa-2x","num":"120"},
+{"name":"3 hours","image":"fa-clock fa-2x","num":"180"},
+{"name":"Half Day","image":"fa-clock fa-2x","num":"3600"},
+{"name":"All Day","image":"fa-clock fa-2x","num":"7200"}]
+
+function showAreas(){ 
+    var msg = document.getElementById("msg");
+    msg.innerHTML = "";
+    var obj = areas;
+    document.getElementById("body").innerHTML = "";
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var t = document.createElement("div");
+      t.className = "w3-xlarge";
+      var tm = document.createTextNode(d.name);
+      t.appendChild(tm);
+      li.className = "fas w3-round w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-grey " + d.image ;
+      li.id = d.name;
+      li.onclick = function(){ 
+            var obj = this;
+            var fobj = document.getElementById("fArea");
+            fobj.value = obj.id                 
+      		showTopics(); 
+      };
+      li.appendChild(t);        
+      document.getElementById("body").appendChild(li);      
+    });
+}   
+function showTopics(){          
+    var obj = times;
+    document.getElementById("body").innerHTML = "";
+    obj.forEach(function(doc, z) {
+      var d = doc;
+      var li = document.createElement("div");
+      var t = document.createElement("div");
+      t.className = "w3-xlarge";
+      var tm = document.createTextNode(d.name);  
+      t.appendChild(tm);
+      li.id = d.name;
+      li.className = "fas w3-theme w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-grey " + d.image ;
+      li.onclick = function(){ 
+            var obj = this;
+            var fobj = document.getElementById("fTopic");
+            fobj.value = obj.id            
+            document.getElementById("body").innerHTML = "";
+            
+            var aobj = document.getElementById("fArea");
+            var strobj = {"topic":"","time":"","id":""};
+            strobj.topic = aobj.value;
+            strobj.time = obj.id;
+            strobj.id = new Date().toISOString();
+            //var dataObj = JSON.parse(strobj);
+            currEntry['FollowIT'].push(strobj);   
+            showEntry();
+      };
+      li.appendChild(t);        
+      document.getElementById("body").appendChild(li);      
+    });    
+}  
+function showEntry(){	    
+    var cobj = currEntry['FollowIT'];
+    document.getElementById("body").innerHTML = "";
+    cobj.forEach(function(doc) {                        
+              var d = doc;
+      		  var li = document.createElement("div");      		  
+      		  li.className = "w3-container w3-xlarge s6 w3-leftbar w3-animate-bottom ";
+              li.innerHTML = "<div class='w3-left'" 
+                           + ">" 
+                           + d.topic + "</div> "
+                           + "<div class='w3-right'>" 
+                           +  d.time+ "</div>"
+                           + "<div id='" + d.id + "' class='w3-hide'>" 
+                           +  d.id+ "</div>";
+             li.ondblclick = function(){ 
+                     var obj = d.id;
+                    removeItem(obj); 
+                   };              
+             document.getElementById("body").appendChild(li);
+     });              
+}
+function removeItem(i){
+  var row = i;
+  //alert(row);
+  console.log(row);
+  var cobj = currEntry['FollowIT'];
+  var x=0;
+  cobj.forEach(function(doc) {           
+              var d = doc;
+              if (d.id == row) {
+              	currEntry['FollowIT'].splice(x,1);
+                showEntry();
+              }
+              x++;
+  });            
+}
+/*function showCal(){
+    //var obj = document.getElementById("inputdate");    
+    //obj.classList.toggle('w3-hide');     
+    document.getElementById('id01').style.display='block';
+ }*/
+function setDate(){
+    displayMsg("");
+	var obj = document.getElementById("inputdate");   
+    //document.getElementById("foot").innerHTML = obj.value;
+    dataDate = obj.value;
+    currEntry ={"FollowIT":[]};
+    getData(obj.value);
+}
+function setToday(){   
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if( dd < 10) { dd = '0'+dd }; 
+  if( mm < 10) { mm = '0'+mm };
+  today = yyyy + '-' + mm + '-' + dd;  
+  document.getElementById("inputdate").value = today; 
+  dataDate = today;
+  getData(dataDate);
+  //document.getElementById("foot").innerHTML = today;   
+}
+function saveData(){
+  console.log(JSON.stringify(currEntry));
+  //alert(JSON.stringify(currEntry));
+  //alert(dataDate);
+  addRow(dataDate);
+  var msg = document.getElementById("msg");
+  msg.innerHTML = " Data saved for " + dataDate + "";
+}
+function getData(val){
+    getRow(val);
+}
+</script>
+<body class="w3-theme" onload="setToday();showAreas();">
+
+<div class="w3-bar w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme">
+      <i class="fas fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
+      <i class="fas fa-home"></i></a>  
+      
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+        <i class="fas fa-list-alt" onclick="showEntry();"></i></a>           
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+        <i class="far fa-save" onclick="saveData();">
+</i></a> 
+<!--<span id="foot" class="w3-bar-item"></span>-->
+      <a href"#" class="w3-bar-item w3-right " >
+     <input id="inputdate" type="date" onchange="setDate();" ></a> 
+</div> 
+
+<div id="body"></div>
+
+<input type="hidden" id="fArea" value="" />
+<input type="hidden" id="fTopic" value="" />
+<div id="msg" class="w3-container"></div>
+<div id="footbar" class="w3-bar w3-theme">
+nibor@github.com      
+</div>
+
+
+<script>
+var db = new PouchDB('FollowIT');
+  
+function getDbInfo(){
+    db.info().then(function (info) {
+        console.log(info);
+        var msg = document.getElementById("msg");
+        msg.innerHTML = JSON.stringify(info);
+      });
+      getRows();
+}
+function addRow(ddate){
+    var eobj = JSON.stringify(currEntry);
+    var entry = {
+      _id: ddate,
+      doc: eobj       
+    }; 
+    var msg = document.getElementById("msg");
+ /*** new code ****/
+ db.get(ddate).catch(function (err) {
+  if (err.name === 'not_found') {
+     db.put(entry, function callback(err, result) {
+      if (!err) {
+        console.log('Successfully posted a activity list!');        
+      } else { 
+        console.log('There was an issue! on entry' + err); 
+      }
+    });
+  } else { 
+    console.log(err);
+  }
+}).then(function (foundDoc) {
+  var update = {
+    _id: ddate,
+    doc: eobj,
+    _rev: foundDoc._rev
+  }
+  
+  db.put(update, function callback(err, result) {
+      if (!err) { console.log('Successfully updated activity list!');        
+      } else { console.log('There was an issue! on update' + err); }
+    });
+
+}).catch(function (err) {
+  console.log(err);
+});
+ /****  end ******/
+    
+}    
+function getRow(ddate){
+  //alert(ddate);
+  if(ddate !== 'undefined'){
+  db.get(ddate).then(function (doc) {
+      var obj = doc.doc;
+      //alert(obj.length);
+      currEntry = JSON.parse(obj);
+      if(obj.length <= 15){ displayMsg("No entries."); 
+        showEntry();
+      } else {
+        showEntry();
+      }
+      }).catch(function (err) {
+         console.log(err);
+         displayMsg("Record(s) " + err.reason);
+         showEntry();
+     }); 
+  } else {
+      displayMsg("No record found.");
+  }
+}
+function removeRow(id){
+  //var id = 
+  if(id !== undefined){    
+  db.get(id).then(function (doc) {
+      db.remove(doc);
+    });      
+  } else {
+      alert("No record row selected to delete.");
+  }
+}
+function getRows(){   
+  db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
+       var documents =  doc.rows ;  
+       documents.forEach(function(docx) {
+          var ent = docx.doc;                                           
+          var msg = document.getElementById("msg");
+          msg.innerHTML = msg.innerHTML + JSON.stringify(ent);         
+        }); 
+    });          
+}
+function displayMsg(mmm){
+     var msg = document.getElementById("msg");
+      msg.innerHTML = mmm;
+}
+</script>
+
+</body>
+
+</html>
