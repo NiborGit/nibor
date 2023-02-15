@@ -55,7 +55,7 @@ function showAreas(){
       t.className = "w3-large";
       var tm = document.createTextNode(d.name);
       t.appendChild(tm);
-      li.className = "fas w3-round w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-grey " + d.image ;
+      li.className = "fas w3-round w3-theme-d3 w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-black " + d.image ;
       li.id = d.name;
       li.onclick = function(){ 
             var obj = this;
@@ -78,7 +78,7 @@ function showTopics(){
       var tm = document.createTextNode(d.name);  
       t.appendChild(tm);
       li.id = d.name;
-      li.className = "fas w3-theme w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-grey " + d.image ;
+      li.className = "fas w3-theme-d3 w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-black " + d.image ;
       li.onclick = function(){ 
             var obj = this;
             var fobj = document.getElementById("fTopic");
@@ -172,9 +172,9 @@ function getData(val){
     getRow(val);
 }
 </script>
-<body class="w3-theme" onload="setToday();showAreas();">
+<body class="w3-theme-d2" onload="setToday();showAreas();">
 
-<div class="w3-bar w3-theme">
+<div class="w3-bar w3-theme-d5">
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme">
       <i class="fas fa-bars"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
@@ -194,7 +194,7 @@ function getData(val){
 
 <input type="hidden" id="fArea" value="" />
 <input type="hidden" id="fTopic" value="" />
-<div id="msg" class="w3-container"></div>
+<div id="msg" class="w3-container w3-theme"></div>
 <div id="footbar" class="w3-bar w3-theme">
 nibor@github.com      
 </div>
