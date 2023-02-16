@@ -180,6 +180,13 @@ function getData(val){
 <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="far fa-save" onclick="saveData();">
 </i></a> 
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+        <i class="fas fa-file-code" onclick="handleExportJson();">
+</i></a> 
+<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+        <i class="fas fa-file-csv" onclick="handleExportCsv();">
+</i></a> 
+	
 <!--<span id="foot" class="w3-bar-item"></span>-->
       <a href"#" class="w3-bar-item w3-right " >
      <input id="inputdate" type="date" onchange="setDate();" ></a> 
@@ -289,6 +296,56 @@ function displayMsg(mmm){
      var msg = document.getElementById("msg");
       msg.innerHTML = mmm;
 }
+function handleExportCsv(){ 
+db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
+       var documents =  doc.rows; 
+       var docOutput = 'Date,Task,Minutes,EntryTime\n';
+       documents.forEach(function(docx) {
+          var ent = docx.doc.doc;
+          var item = JSON.parse(ent);
+          var rdata = item.FollowIT;
+          rdata.forEach(function(r) {
+            var t = r.topic;
+            var tm = r.time.split(" ")[0];
+            if (tm == 1){ tm = 60 } 
+            if (tm == 2){ tm = 120}
+            if (tm == 3){ tm = 180} 
+            if (tm == 'Half'){tm =2400}
+            if (tm == 'All'){tm = 4800}
+          	docOutput =  docOutput + docx.id + ',' + t +',' + tm + ','+ r.id +'\n';          
+          });
+          });
+      download(docOutput,'FollowIT.csv','text/plain');
+    });          
+}
+function handleExportJson() {
+  db.allDocs({include_docs: true}, (error, doc) => {
+    if (error) console.error(error);
+    else  download(
+      JSON.stringify(doc.rows.map(({doc}) => doc)),
+      'FollowIT.json',
+      'text/plain'
+    );
+  });
+}
+function download (data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+      var a = document.createElement("a"),
+              url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
+  }
+}
+	
 </script>
 
 </body>
