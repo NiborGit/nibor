@@ -324,7 +324,7 @@ function handleExportJson() {
     else  download(
       JSON.stringify(doc.rows.map(({doc}) => doc)),
       'FollowIT.json',
-      'text/plain'
+      'application/json'
     );
   });
 }
