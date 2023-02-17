@@ -10,13 +10,14 @@
 	
 	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css"> 
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blackcss"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <style>
 * {
   box-sizing: border-box;
 }
 </style>
+
 <script src="//cdn.jsdelivr.net/npm/pouchdb@8.0.0/dist/pouchdb.min.js"></script>
 <script>
 let currEntry={"FollowIT":[]};
@@ -62,7 +63,7 @@ function showAreas(){
       t.className = "w3-large";
       var tm = document.createTextNode(d.name);
       t.appendChild(tm);
-      li.className = "fas w3-round w3-theme-d5 w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-black " + d.image ;
+      li.className = "fas w3-round w3-theme-l1 w3-card w3-padding-24 w3-col s4 w3-center w3-animate-left w3-hover-black " + d.image ;
       li.id = d.name;
       li.onclick = function(){ 
             var obj = this;
@@ -85,7 +86,7 @@ function showTopics(){
       var tm = document.createTextNode(d.name);  
       t.appendChild(tm);
       li.id = d.name;
-      li.className = "fas w3-theme-d5 w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-black " + d.image ;
+      li.className = "fas w3-theme-l1 w3-col s4 w3-padding-24 w3-center w3-xlarge w3-hover-black " + d.image ;
       li.onclick = function(){ 
             var obj = this;
             var fobj = document.getElementById("fTopic");
@@ -181,7 +182,7 @@ function getData(val){
 </script>
 <body class="w3-theme-d3" onload="setToday();showAreas();">
 
-<div class="w3-bar w3-theme-d5">
+<div class="w3-bar w3-theme-l3">
   <a href="#" class="w3-bar-item w3-button w3-xlarge">
       <i class="fas fa-bars"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
