@@ -322,8 +322,8 @@ db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
             if (tm == 1){ tm = 60 } 
             if (tm == 2){ tm = 120}
             if (tm == 3){ tm = 180} 
-            if (tm == 'Half'){tm =2400}
-            if (tm == 'All'){tm = 4800}
+            if (tm == 'Half'){tm =240}
+            if (tm == 'All'){tm = 480}
           	docOutput =  docOutput + docx.id + ',' + t +',' + tm + ','+ r.id +'\n';          
           });
           });
