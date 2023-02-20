@@ -327,7 +327,7 @@ db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
           	docOutput =  docOutput + docx.id + ',' + t +',' + tm + ','+ r.id +'\n';          
           });
           });
-      download(docOutput,'FollowIT.csv','text/plain');
+      download(docOutput,'FollowPastor.csv','text/plain');
     });          
 }
 function handleExportJson() {
