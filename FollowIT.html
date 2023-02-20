@@ -308,14 +308,15 @@ db.allDocs({include_docs: true, descending: true  }, function(err, doc) {
           var rdata = item.FollowIT;
           rdata.forEach(function(r) {
             var t = r.topic;
-            var n = r.num;
-           /* var tm = r.time.split(" ")[0];
+            var tm = r.num;
+	   if(typeof tm === "undefined"){	  
+             tm = r.time.split(" ")[0];
             if (tm == 1){ tm = 60 } 
             if (tm == 2){ tm = 120}
             if (tm == 3){ tm = 180} 
             if (tm == 'Half'){tm =240}
-            if (tm == 'All'){tm = 480} */
-          	docOutput =  docOutput + docx.id + ',' + t +',' + n + ','+ r.id +'\n';          
+            if (tm == 'All'){tm = 480}   }
+          	docOutput =  docOutput + docx.id + ',' + t +',' + tm + ','+ r.id +'\n';          
           });
           });
       download(docOutput,'FollowIT.csv','text/plain');
