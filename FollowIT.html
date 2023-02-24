@@ -185,7 +185,7 @@ function getData(val){
 <!--  -->	
 
 <div class="w3-bar w3-theme">
-  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme">
+  <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme"  onclick="w3_open();">
       <i class="fas fa-bars fa-1x"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-xlarge" onclick="showAreas();">
       <i class="fas fa-home fa-1x"></i></a>  
@@ -361,10 +361,7 @@ function download (data, filename, type) {
           window.URL.revokeObjectURL(url);  
       }, 0); 
   }
-}
-	
-</script>
-<script>	
+}		
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
 }
