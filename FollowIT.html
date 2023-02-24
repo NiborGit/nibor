@@ -171,6 +171,18 @@ function getData(val){
 }
 </script>
 <body class="w3-theme" onload="setToday();showAreas();">
+<!-- Side Bar -->
+<div class="w3-sidebar w3-theme w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+<a href="#" class="w3-bar-item w3-button w3-large" >
+        <i class="fas fa-file-code fa-1x"  onclick="handleExportJson();">
+</i>&nbsp;Export JSON file</a> 
+<a href="#" class="w3-bar-item w3-button w3-large" >
+        <i class="fas fa-file-csv  fa-1x" onclick="handleExportCsv();">
+</i>&nbsp;Export CSV file</a>   
+</div>
+	
+<!--  -->	
 
 <div class="w3-bar w3-theme">
   <a href="#" class="w3-bar-item w3-button w3-xlarge w3-theme">
@@ -183,12 +195,12 @@ function getData(val){
 <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="far fa-save fa-1x" onclick="saveData();">
 </i></a> 
-<a href="#" class="w3-bar-item w3-button w3-xlarge" >
+<!-- <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="fas fa-file-code fa-1x" onclick="handleExportJson();">
 </i></a> 
 <a href="#" class="w3-bar-item w3-button w3-xlarge" >
         <i class="fas fa-file-csv fa-1x" onclick="handleExportCsv();">
-</i></a> 
+</i></a> -->
 	
 <!--<span id="foot" class="w3-bar-item"></span>-->
       <a href"#" class="w3-bar-item w3-right " >
@@ -350,7 +362,12 @@ function download (data, filename, type) {
       }, 0); 
   }
 }
-	
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}	
 </script>
 
 </body>
