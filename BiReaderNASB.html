@@ -27,7 +27,7 @@ body,h1,h2,h3,h4,h5,div,input {font-family: Roboto, sans-serif;}
 <div id="myBar" class="w3-bar w3-theme-d4 w3-padding-16">
 <a href="#" class="w3-bar-item w3-button w3-green w3-left" onclick="location.reload()">
       <i class="fas fa-coffee"></i></a>
-<select id="books" class="w3-bar-item w3-border" placeholder="Choose book..." 
+<select id="books" class="w3-bar-item w3-border w3-mobile" placeholder="Choose book..." 
 onchange="showChapters(this)"
 onmousedown="resetChapters(this)"
 > 
@@ -60,23 +60,23 @@ onmousedown="resetChapters(this)"
  <option>Jude</option>
  <option>Revelation</option>
 </select>
-<select id="chapters"  class="w3-bar-item w3-border"
+<select id="chapters"  class="w3-bar-item w3-mobile w3-border"
 onchange="setPosition()"
 onmousedown="this.value = '';">
 
 </select>
 <!--<datalist id="dataChapters"></datalist>-->
 </div>
-<div class="w3-bar w3-theme-d4  w3-bottombar" id="myBar">
+<div class="w3-bar w3-theme-d4 w3-mobile w3-bottombar" id="myBar">
 <div class="fas fa-arrow-left w3-button w3-left" id="pBtn" onclick="prevIndex();"></div> 
 <div class="w3-container" id="navMsg"></div>    
 <div class="fas fa-arrow-right w3-button w3-right" id="nBtn" onclick="nextIndex()"></div>
 </div>
-<div class="w3-container w3-padding-16 w3-large w3-pale-yellow w3-border-left w3-border-right  w3-bottombar" id="myULverses" >
+<div class="w3-container w3-padding-16 w3-mobile w3-large w3-pale-yellow w3-border-left w3-border-right  w3-bottombar" id="myULverses" >
 </div>
 <div id="msg"></div>
 
-<footer class="w3-container w3-theme-d4 " style="position:relative">
+<footer class="w3-container w3-theme-d4 w3-mobile " style="position:relative">
 <p id="back-top" >
 <a href="#top" class="w3-btn w3-circle w3-theme-action w3-right" style="position:absolute;top:-28px;right:16px;">
 <i class="fas fa-angle-up"></i></a>
