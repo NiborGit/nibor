@@ -27,44 +27,45 @@ body,h1,h2,h3,h4,h5,div,input {font-family: Roboto, sans-serif;}
 <div id="myBar" class="w3-bar w3-theme-d4 w3-padding-16">
 <a href="#" class="w3-bar-item w3-button w3-green w3-left" onclick="location.reload()">
       <i class="fas fa-coffee"></i></a>
-<input list="BookName" id="books" size="15" class="w3-bar-item w3-border" placeholder="Choose book..." 
+<select id="books" class="w3-bar-item w3-border" placeholder="Choose book..." 
 onchange="showChapters(this)"
 onmousedown="resetChapters(this)"
 > 
-<datalist id="BookName">
-<option value="Matthew">
-<option value="Mark">
-<option value="Luke">
-<option value="John">
-<option value="Acts">
-<option value="Romans">
-<option value="1 Corinthians">
-<option value="2 Corinthians">
-<option value="Galatians">
-<option value="Ephesians">
-<option value="Philippians">
-<option value="Colossians">
-<option value="1 Thessalonians">
-<option value="2 Thessalonians">
-<option value="1 Timothy">
-<option value="2 Timothy">
-<option value="Titus">
-<option value="Philemon">
-<option value="Hebrews">
-<option value="James">
-<option value="1 Peter">
-<option value="2 Peter">
-<option value="1 John">
-<option value="2 John">
-<option value="3 John">
-<option value="Jude">
-<option value="Revelation">
-</datalist>
-<input list="dataChapters" id="chapters" size="3" class="w3-bar-item w3-border"
+<!--<datalist id="BookName"> -->
+<option>Matthew</option>
+ <option>Mark</option>
+ <option>Luke</option>
+ <option>John</option>
+ <option>Acts</option>
+ <option>Romans</option>
+ <option>1 Corinthians</option>
+ <option>2 Corinthians</option>
+ <option>Galatians</option>
+ <option>Ephesians</option>
+ <option>Philippians</option>
+ <option>Colossians</option>
+ <option>1 Thessalonians</option>
+ <option>2 Thessalonians</option>
+ <option>1 Timothy</option>
+ <option>2 Timothy</option>
+ <option>Titus</option>
+ <option>Philemon</option>
+ <option>Hebrews</option>
+ <option>James</option>
+ <option>1 Peter</option>
+ <option>2 Peter</option>
+ <option>1 John</option>
+ <option>2 John</option>
+ <option>3 John</option>
+ <option>Jude</option>
+ <option>Revelation</option>
+</select>
+<select id="chapters"  class="w3-bar-item w3-border"
 onchange="setPosition()"
-onmousedown="this.value = '';">  
-<datalist id="dataChapters">
-</datalist>
+onmousedown="this.value = '';">
+
+</select>
+<!--<datalist id="dataChapters"></datalist>-->
 </div>
 <div class="w3-bar w3-theme-d4  w3-bottombar" id="myBar">
 <div class="fas fa-arrow-left w3-button w3-left" id="pBtn" onclick="prevIndex();"></div> 
@@ -122,7 +123,7 @@ if(currIndex < lchap ) {
 function resetChapters(obj){ 
 	obj.value = ''; 
     document.getElementById('chapters').value ='';
-    document.getElementById('dataChapters').innerHTML = '';
+    document.getElementById('chapters').innerHTML = '';
 }
 
 function showChapters(obj){ 
@@ -137,10 +138,10 @@ dataChapter.forEach(function(doc) {
          globalposition = d;
          document.getElementById('navMsg').innerHTML = d.Bookname; 
          for (var i = 1; i <= d.LastChapter; i++) {
-  			options += '<option value="' + i + '" />';
+  			options += '<option value="' + i + '">' + i + '</option>';
 			}
 
-			document.getElementById('dataChapters').innerHTML = options;
+			document.getElementById('chapters').innerHTML = options;
         }
     } );   
 }
@@ -166,9 +167,8 @@ function myFunction(x) {
      obj.innerHTML = obj.innerHTML + d.orig_verse + ".&nbsp;&nbsp;" +d.text+"<br>";
     }
   });
-  document.getElementById("chapters").blur(); 
-  document.getElementById("myULverses").focus();
- 
+ document.getElementById("chapters").blur(); 
+ document.getElementById("myULverses").focus();
 }
 </script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
