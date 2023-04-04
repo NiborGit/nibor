@@ -17,10 +17,10 @@
 </style>
 
 <body>
-<div id="myBar" class="w3-bar w3-theme-d4">
+<div id="myBar" class="w3-bar w3-theme-d4 w3-padding-16">
 <a href="#" class="w3-bar-item w3-button w3-green w3-left" onclick="location.reload()">
       <i class="fas fa-coffee"></i></a>
-<input list="BookName" id="books" size="15" class="w3-bar-item" placeholder="Choose book..." 
+<input list="BookName" id="books" size="15" class="w3-bar-item w3-border" placeholder="Choose book..." 
 onchange="showChapters(this)"
 onmousedown="resetChapters(this)"
 > 
@@ -53,7 +53,7 @@ onmousedown="resetChapters(this)"
 <option value="Jude">
 <option value="Revelation">
 </datalist>
-<input list="dataChapters" id="chapters" size="3" class="w3-bar-item"
+<input list="dataChapters" id="chapters" size="3" class="w3-bar-item w3-border"
 onchange="setPosition()"
 onmousedown="this.value = '';">  
 <datalist id="dataChapters">
