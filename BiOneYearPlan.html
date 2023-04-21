@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>FollowIt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-grey.css"> 
+
+
+<body class="w3-theme" onload="setToday();">
+<div id="myBar" class="w3-bar w3-theme-d4">
+<p class="w3-bar-item w3-left">365 Day Chronological Reading Plan </p>
+      <a href"#" class="w3-bar-item w3-right " >
+     <input id="inputdate" type="date" onchange="setDate();" ></a>
+</div> <!-- end of bar -->     
+<div id="msg" class="w3-container"></div>     
+
+<div id="body" class="w3-container w3-pale-yellow w3-large"></div>
+     
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+var dataDate;
+function displayMsg(mmm){
+     var msg = document.getElementById("msg");
+      msg.innerHTML = mmm;
+}
+function setDate(){
+    displayMsg("");
+	var obj = document.getElementById("inputdate");   
+    dataDate = obj.value; 
+    getData(obj.value);
+}
+function setToday(){   
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; 
+  var yyyy = today.getFullYear();
+  if( dd < 10) { dd = '0'+dd }; 
+  if( mm < 10) { mm = '0'+mm };
+  today = yyyy + '-' + mm + '-' + dd;  
+  document.getElementById("inputdate").value = today; 
+  datDate = today;
+  getData(today);
+}
+function getData(dpoint){
+var baseLink = "https://api.nlt.to/api/reading?key=22b24473-b78b-46a1-8821-a85249c23db2&plan=OYCB&Date=" + dpoint;
+
+w3.getHttpData(baseLink, myFunction);
+}
+function myFunction(x) {
+  var obj = document.getElementById("body");
+  obj.innerHTML = '';
+  obj.innerHTML = x;
+}
+</script>
+</body>
+</html>
