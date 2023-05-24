@@ -8,8 +8,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-forward to "https://forms.gle/Y6o2hXFbmDCC3y1y6"
+ <script>
+   function init(){
+    window.location.replace("https://forms.gle/Y6o2hXFbmDCC3y1y6");      
+   }
+  </script>   
+<body onload="init()">
+  
+
 <div class="container">
   <h2>Opt-in form for Bi - Daily SMS Bible Verse</h2>
   <form action="/action_page.php">
