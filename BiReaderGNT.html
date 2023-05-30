@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>GNT BiApp Reader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+<link rel="manifest" href="./site.webmanifest"> 
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<style>
+body,h1,h2,h3,h4,h5,div,input {font-family: Roboto, sans-serif;}
+#copyright:before {content: '\00A9'; }
+
+#navMsg, #pBtn, #nBtn {  
+  display: inline-block;
+  text-align: center; 
+  width: 33%; 
+}
+</style>
+
+<body>
+<div id="myBar" class="w3-bar w3-theme-d4 w3-padding-16">
+<a href="#" class="w3-bar-item w3-button w3-green w3-left" onclick="location.reload()">
+      <i class="fas fa-coffee"></i></a>
+<select id="books" class="w3-bar-item w3-border w3-third" placeholder="Choose book..." 
+onchange="showChapters(this)"
+onmousedown="resetChapters(this)"
+> 
+<!--<datalist id="BookName"> -->
+<option>Matthew</option>
+ <option>Mark</option>
+ <option>Luke</option>
+ <option>John</option>
+ <option>Acts</option>
+ <option>Romans</option>
+ <option>1 Corinthians</option>
+ <option>2 Corinthians</option>
+ <option>Galatians</option>
+ <option>Ephesians</option>
+ <option>Philippians</option>
+ <option>Colossians</option>
+ <option>1 Thessalonians</option>
+ <option>2 Thessalonians</option>
+ <option>1 Timothy</option>
+ <option>2 Timothy</option>
+ <option>Titus</option>
+ <option>Philemon</option>
+ <option>Hebrews</option>
+ <option>James</option>
+ <option>1 Peter</option>
+ <option>2 Peter</option>
+ <option>1 John</option>
+ <option>2 John</option>
+ <option>3 John</option>
+ <option>Jude</option>
+ <option>Revelation</option>
+</select>
+<select id="chapters"  class="w3-bar-item w3-third w3-border"
+onchange="setPosition()"
+onmousedown="this.value = '';">
+
+</select>
+<!--<datalist id="dataChapters"></datalist>-->
+</div>
+<div class="w3-bar w3-theme-d4 w3-mobile w3-bottombar" id="myBar">
+<div class="fas fa-arrow-left w3-button w3-left" id="pBtn" onclick="prevIndex();"></div> 
+<div class="w3-container" id="navMsg"></div>    
+<div class="fas fa-arrow-right w3-button w3-right" id="nBtn" onclick="nextIndex()"></div>
+</div>
+<div class="w3-container w3-padding-16 w3-mobile w3-xlarge w3-pale-yellow w3-border-left w3-border-right  w3-bottombar" id="myULverses" >
+</div>
+<div id="msg"></div>
+
+<footer class="w3-container w3-theme-d4 w3-mobile " style="position:relative">
+<p id="back-top" >
+<a href="#top" class="w3-btn w3-circle w3-theme-action w3-right" style="position:absolute;top:-28px;right:16px;">
+<i class="fas fa-angle-up"></i></a>
+</p>
+  <div id="copyright" >&nbsp;Niborgit@gmail.com</div>
+</footer>
+
+
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+var bookitem = 0;
+var chapitem = 0;
+var globalposition; 
+function prevIndex(){ 
+document.getElementById("myULverses").innerHTML = '';
+var currIndex = chapitem;
+if(currIndex > 1 ) {
+	currIndex = currIndex -1 ;
+    chapitem = currIndex;
+    getData();
+    document.getElementById('navMsg').innerHTML = bookitem +" " +chapitem; 
+} else {
+ chapitem = 1;
+ getData();
+}
+}
+
+function nextIndex(){
+//alert(globalposition.LastChapter);
+var lchap = globalposition.LastChapter;
+var currIndex = parseInt(chapitem);
+document.getElementById("myULverses").innerHTML = '';
+if(currIndex < lchap ) {
+	currIndex = currIndex +1 ;
+    chapitem = currIndex;
+    getData();
+    document.getElementById('navMsg').innerHTML = bookitem +" " +chapitem;  
+} else {
+ chapitem = lchap;
+ getData();
+}
+
+}
+function resetChapters(obj){ 
+	obj.value = ''; 
+    document.getElementById('chapters').value ='';
+    document.getElementById('chapters').innerHTML = '';
+}
+
+function showChapters(obj){ 
+var item = obj.value;
+var dataChapter = [{"Bookname":"Matthew","LastChapter":28,"Booknumber":"40"},{"Bookname":"Mark","LastChapter":16,"Booknumber":"41"},{"Bookname":"Luke","LastChapter":24,"Booknumber":"42"},{"Bookname":"John","LastChapter":21,"Booknumber":"43"},{"Bookname":"Acts","LastChapter":28,"Booknumber":"44"},{"Bookname":"Romans","LastChapter":16,"Booknumber":"45"},{"Bookname":"1 Corinthians","LastChapter":16,"Booknumber":"46"},{"Bookname":"2 Corinthians","LastChapter":13,"Booknumber":"47"},{"Bookname":"Galatians","LastChapter":6,"Booknumber":"48"},{"Bookname":"Ephesians","LastChapter":6,"Booknumber":"49"},{"Bookname":"Philippians","LastChapter":4,"Booknumber":"50"},{"Bookname":"Colossians","LastChapter":4,"Booknumber":"51"},{"Bookname":"1 Thessalonians","LastChapter":5,"Booknumber":"52"},{"Bookname":"2 Thessalonians","LastChapter":3,"Booknumber":"53"},{"Bookname":"1 Timothy","LastChapter":6,"Booknumber":"54"},{"Bookname":"2 Timothy","LastChapter":4,"Booknumber":"55"},{"Bookname":"Titus","LastChapter":3,"Booknumber":"56"},{"Bookname":"Philemon","LastChapter":1,"Booknumber":"57"},{"Bookname":"Hebrews","LastChapter":13,"Booknumber":"58"},{"Bookname":"James","LastChapter":5,"Booknumber":"59"},{"Bookname":"1 Peter","LastChapter":5,"Booknumber":"60"},{"Bookname":"2 Peter","LastChapter":3,"Booknumber":"61"},{"Bookname":"1 John","LastChapter":5,"Booknumber":"62"},{"Bookname":"2 John","LastChapter":1,"Booknumber":"63"},{"Bookname":"3 John","LastChapter":1,"Booknumber":"64"},{"Bookname":"Jude","LastChapter":1,"Booknumber":"65"},{"Bookname":"Revelation","LastChapter":22,"Booknumber":"66"}]
+
+dataChapter.forEach(function(doc) {
+    	var d = doc;       
+        var options = '';
+       
+        if (d.Bookname === item) { 
+         globalposition = d;
+         document.getElementById('navMsg').innerHTML = d.Bookname; 
+         for (var i = 1; i <= d.LastChapter; i++) {
+  			options += '<option value="' + i + '">' + i + '</option>';
+			}
+
+			document.getElementById('chapters').innerHTML = options;
+        }
+    } );   
+}
+function setPosition(){
+var b = document.getElementById('books').value;
+var c = document.getElementById('chapters').value;
+document.getElementById('navMsg').innerHTML = b +" " +c; 
+bookitem = b;
+chapitem = c;
+getData();
+}
+function getData(){
+
+w3.getHttpData("https://niborgit.github.io/nibor/Json/BiGNT.json", myFunction);
+}
+function myFunction(x) {
+  var obj = document.getElementById("myULverses");
+  obj.innerHTML = '';
+  var ntObject = JSON.parse(x);
+  ntObject.forEach(function(doc){
+  	var d = doc;
+    if(d.BookName === bookitem && d.orig_chapter == chapitem) {
+     obj.innerHTML = obj.innerHTML + d.orig_verse + ".&nbsp;&nbsp;" +d.text+"<br>";
+    }
+  });
+ document.getElementById("chapters").blur(); 
+ document.getElementById("myULverses").focus();
+}
+</script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+</body>
+
+</html>
