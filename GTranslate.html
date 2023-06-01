@@ -16,7 +16,10 @@
             target: 'es',
           });
         }).then(function(response) {
-          console.log(response.result.data.translations[0].translatedText);
+          var resp = response.result.data.translations[0].translatedText;
+          console.log(resp);
+          var tDiv = document.getElementById('results');
+          tDiv.innerHTML = resp; 
         }, function(reason) {
           console.log('Error: ' + reason.result.error.message);
         });
