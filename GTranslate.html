@@ -13,7 +13,7 @@
           return gapi.client.language.translations.list({
             q: 'hello world',
             source: 'en',
-            target: 'de',
+            target: 'es',
           });
         }).then(function(response) {
           console.log(response.result.data.translations[0].translatedText);
