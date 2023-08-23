@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Weathah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<style>
+body,h1,h2,h3,h4,h5,div,input {font-family: Roboto, sans-serif;}
+#copyright:before {content: '\00A9'; }
+
+#navMsg, #pBtn, #nBtn {  
+  display: inline-block;
+  text-align: center; 
+  width: 33%; 
+}
+</style>
+
+
+<body class="w3-theme" onload="getLocation()">
+	
+<div id="id01" class="w3-container">
+  <div id="town" class="w3-card"><h2>{{name}}</h2></div>
+  <div id="msg" class="w3-panel"></div>
+  <div id="country" class="w3-panel w3-theme-action">Country:&nbsp;{{country}}</div>
+  <div id="coords" class="w3-container w3-hide">Longitude:{{lon}}  Latitude:{{lat}}</div>
+  <div id="wea" class="w3-panel w3-theme-l2"><h5><em>Forcast:</em>&nbsp;&nbsp;{{main}} <img src=" https://openweathermap.org/img/wn/{{icon}}.png";</img></h5><hr><em>Description:</em>&nbsp;&nbsp;{{description}}</div>
+<div id="main" class="w3-card w3-theme-d2">
+Tempature: {{temp}}<br>
+Feels like: {{feels_like}}<br>
+Min: {{temp_min}}<br>
+Max: {{temp_max}}<br>
+Pressure: {{pressure}}<br>
+Humidity: {{humidity}}
+</div>
+  <a href="#" class="w3-button w3-small" onclick="showForecast()">See  Forecast</a>
+ 
+<div id="foreContainer" class="w3-panel w3-hide">
+<div class="w3-panel w3-row s12">
+  <i class="w3-col s2">Day</i>
+  <i class="w3-col s2">Hour</i>
+  <i class="w3-col s2">Temp</i>
+  <i class="w3-col s6">Condition(s)</i> 
+</div>  
+<div id="foreCast" class="w3-panel w3-border-top"></div>
+
+</div>
+
+</body>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+
+function init(){
+w3.getHttpData("https://api.openweathermap.org/data/2.5/weather?zip=10001,us&units=imperial&appid=6e37154c8242124ca81adf207e987814", myFunction);
+}
+
+function myFunction(x){
+    var obj = JSON.parse(x);
+    w3.displayObject("town", obj);
+    w3.displayObject("country", obj.sys);
+    w3.displayObject("coords", obj.coord);
+    w3.displayObject("wea", obj.weather[0]);
+    w3.displayObject("main", obj.main);
+}
+
+function getByZip(z){
+w3.getHttpData("https://api.openweathermap.org/data/2.5/weather?zip=" + z + ",us&units=imperial&appid=6e37154c8242124ca81adf207e987814", myFunction);
+}
+
+function getByLocation(lon, lat){
+w3.getHttpData("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=6e37154c8242124ca81adf207e987814", myFunction);
+  
+}
+function getForeCast(lon, lat){
+w3.getHttpData("https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&units=imperial&cnt=12&appid=6e37154c8242124ca81adf207e987814", myForecast);
+}
+function showForecast(){
+   var obj = document.getElementById("foreContainer");
+    obj.classList.toggle('w3-hide');
+}
+function myForecast(x){
+    var obj = JSON.parse(x);
+    obj.list.forEach(function(doc, z) {   
+      var d = doc;
+      
+      var li = document.createElement("div");
+      li.className = "w3-row";
+      var t = document.createElement("div")      
+      t.class="w3-row s12";
+      
+      var dtObj = new Date(d.dt_txt);
+      var s1 = document.createElement("div");
+      s1.innerHTML = dtObj.getMonth()+1 + "/" + dtObj.getDate() ; //toLocaleDateString(); 
+      s1.className = "w3-col s2 w3-small";
+      t.appendChild(s1);
+      
+      var s2 = document.createElement("div");      
+      s2.innerHTML = dtObj.toLocaleString('en-US', { hour: 'numeric', hour12: true })
+      s2.className = "w3-col s2 w3-small";
+      t.appendChild(s2);
+      
+      var s3 = document.createElement("div")
+      s3.innerHTML = d.main.temp; 
+      s3.className = "w3-col s2 w3-small";
+      t.appendChild(s3);
+     
+      var s4 = document.createElement("div")
+      s4.innerHTML = d.weather[0].main;
+      s4.className = "w3-col s3 w3-small"; 
+      t.appendChild(s4);
+      
+      var s5 = document.createElement("div")
+      var  img= document.createElement("img");
+       img.src = "https://openweathermap.org/img/wn/" + d.weather[0].icon + ".png";
+      s5.className = "w3-col s3 w3-small";
+      s5.appendChild(img); 
+      t.appendChild(s5);
+       
+      li.appendChild(t);        
+      document.getElementById("foreCast").appendChild(li);    
+      
+    });  
+    
+}
+
+function getLocation() {
+         
+ 	navigator.geolocation.getCurrentPosition(showPosition,showError);
+    console.log("got it");	  	
+}
+
+function showPosition(position) { 
+console.log(position);
+// var x = document.getElementById("msg");
+ //x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+ getByLocation(position.coords.longitude,position.coords.latitude); 
+ getForeCast(position.coords.longitude,position.coords.latitude);   
+}
+function showError(error) {
+ var x = document.getElementById("msg");
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+  init();
+}
+</script>
+
+</html>
