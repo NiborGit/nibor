@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"> 
+<body>
+<div class="w3-container">
+Búsqueda de su artículo en Wikipedia
+<div><form id="general" class="w3-container w3-light-grey w3-text-blue w3-margin">
+<label for="Name" >¿Qué estás buscando? </label>
+<input type="text" id="query" name="query" placeholder="..." class="w3-input w3-border" onclick="ClearFields()"/>
+<button type="button" onclick="getArticle()">show</button>
+</form>
+</div>
+<div id="title"></div>
+<div id="notes"></div>
+<div><img src="" id="link"></img></div>
+<div><a href="" id="desktop"></a></div>
+</div>
+
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+
+function getArticle(){
+var objName = document.getElementById("query");
+var vObj = objName.value;
+var wiki_str = vObj.slice(0);
+const search = ' ';
+const replaceStr = '_';
+var wiki_cd = wiki_str.split(search).join(replaceStr);                
+console.log(wiki_cd);  
+const wUrl = 'https://es.wikipedia.org/api/rest_v1/page/summary/' + wiki_cd + '?redirect=false' ;
+if ( !UrlExists(wUrl) ) { console.log("does not exists");
+   var obj3 = document.getElementById("title");
+   obj3.innerHTML = "<h3>Item not found</h3>";
+ }
+w3.getHttpObject(wUrl, function(x){    
+   var b = JSON.stringify(x);
+   console.log(b);    
+   var obj = document.getElementById("notes");
+   var obj2 = document.getElementById("link");
+   var obj3 = document.getElementById("title");
+   var obj4 = document.getElementById("desktop");
+  /*** clear objects *****/
+   obj.innerHTML = ""
+   obj2.innerHTML = ""  
+   obj2.src = ""
+   obj3.innerHTML = ""
+   obj4.innerHTML = ""
+   obj4.href= ""
+  /**** set objects *********/   
+   var p = JSON.parse(b);
+   obj.innerHTML = p.extract
+   obj.src = "";
+   obj2.src = p.thumbnail.source;      
+   obj3.innerHTML = "<h3>" + p.title + "</h3>";
+   obj4.href = p.content_urls.mobile.page
+   obj4.innerHTML = p.title
+
+}); 
+
+}
+function UrlExists(url) {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', url, false);
+        http.send();
+        if (http.status != 404)
+            return true;
+        else
+            return false;
+}   
+function ClearFields() {
+   var obj = document.getElementById("query");
+   obj.value = ""   
+}
+</script>
+</body>
+</html>
