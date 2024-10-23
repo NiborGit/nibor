@@ -29,7 +29,7 @@ const search = ' ';
 const replaceStr = '_';
 var wiki_cd = wiki_str.split(search).join(replaceStr);                
 console.log(wiki_cd);  
-const wUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + wiki_cd + '?redirect=false' ;
+const wUrl = 'https://en.wikipedia.org/api/rest_v1/page/mobile-html/' + wiki_cd + '?redirect=false' ;
 if ( !UrlExists(wUrl) ) { console.log("does not exists");
    var obj3 = document.getElementById("title");
    obj3.innerHTML = "<h3>Item not found</h3>";
