@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<style>
+ * {
+  box-sizing: border-box;
+}    
+body, div, input, span { 
+  font-family: Roboto, Verdana, sans-serif;
+}
+
+</style>
+<body class="w3-theme" onload="init()">
+<h4 class="w3-container"> peerjs client - cloud based </h4> 
+<input id="inputConnId" class="w3-input w3-border" placeholder="enter other person's id" />
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2" id="call" title="make call">call</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+id="ishare" title="share">share</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+id="iend" title="End Call">call_end</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+id="icopylink" title="Copy Id Link">link</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+id="icopy" title="Copy Id">content_copy</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+id="iflipCamera" title="Flip Camera">flip_camera_android</a>
+
+
+
+        
+<div id="msgs"></div>
+<div id="trackDiv" width="320" height="auto" class="w3-border">
+<video id="remoteTrack" width="320" height="200"  controls="true" playsinline>
+    <source src="#" type="audio/mpeg">
+</video> 
+<video id="myTrack" width="320" height="200"  controls="true" playsinline>
+    <source src="#" type="audio/mpeg">
+</video></div> 
+</body>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+
+document.getElementById('call').addEventListener('click', function(){
+  makeCall();
+});
+document.getElementById('ishare').addEventListener('click', function(){
+  share();
+});
+document.getElementById('iend').addEventListener('click', function(){
+  endCall();
+});
+document.getElementById('icopylink').addEventListener('click', function(){
+  copyIdLink();
+});
+document.getElementById('icopy').addEventListener('click', function(){
+  copyId();
+});
+let front = false;
+document.getElementById('iflipCamera').addEventListener('click', function(){
+  front = !front;
+  var obj = document.getElementById('myTrack');
+  var stream = obj.srcObject;
+  stream.getTracks().forEach(function(track) {
+           track.stop();
+        });
+  restartStream();
+})
+
+var peer = new Peer();
+peer.on('open', function(id) {
+	console.log('My peer ID is: ' + id);
+    msgs.innerHTML = 'My peer ID is: ' + id;
+    navigator.peerid = id;
+  });
+peer.on('close', function() {
+	peer.destroy();
+});
+peer.on('call', function(call) {
+	// Answer the call, providing our mediaStream
+    var ans = confirm("Answer Call?");
+    if (ans){ 
+        var mediaStream = navigator.mediaStream;
+        navigator.call = call;
+        call.answer(mediaStream);
+        call.on('stream', function(stream) { 
+            var obj = document.getElementById('remoteTrack');
+            obj.srcObject = stream;
+        });
+    } else { return false;}
+  }); 
+navigator.getUserMedia =
+  navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia; 
+
+if (navigator.getUserMedia) {
+  navigator.getUserMedia(
+    { audio: true, video: { width: 350, height: 220 } },
+    (stream) => {
+      const video = document.getElementById('myTrack');
+      video.srcObject = stream;
+      navigator.mediaStream = stream;
+      video.onloadedmetadata = (e) => {
+        video.play();
+      };
+    },
+    (err) => {
+      console.error(`The following error occurred: ${err.name}`);
+    },
+  );
+} else {
+  console.log("getUserMedia not supported");
+}
+
+function init(){
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const qPeerId= urlParams.get('id');
+  document.getElementById("inputConnId").value = qPeerId;
+}
+function makeCall(){
+  var obj = document.getElementById('inputConnId');
+  if(obj.value != ""){
+     var call = peer.call(obj.value, navigator.mediaStream);
+    } else {
+     alert("Enter a peer id. ");
+    } 
+   navigator.call = call; 
+   call.on('stream', function(stream) {
+     var ob = document.getElementById("remoteTrack");
+     ob.srcObject = stream;
+   }); 
+}
+
+
+function share(){  
+   var sobj = {};   
+   sobj.subject = "Call me: ";
+   sobj.title = "Call @ : ";
+   sobj.body = navigator.peerid;
+   sobj.text = navigator.peerid 
+            + `\r\n` 
+            + `https://blockiapps.com/PeerCall.html?id=${navigator.peerid}`;
+   navigator.share(sobj);
+}
+function endCall(){
+	var call = navigator.call;
+    call.close();
+}
+function copyId(){
+	navigator.clipboard.writeText(navigator.peerid);
+	alert('Peer Id copied');
+}
+function copyIdLink(){
+	navigator.clipboard.writeText(`https://blockiapps.com/PeerCall.html?id=${navigator.peerid}`);
+	alert('Peer Id link copied');
+}
+function restartStream(){
+if (navigator.getUserMedia) {
+  navigator.getUserMedia(
+    { audio: true, video: { width: 350, height: 220,
+    facingMode: "environment" } },
+    (stream) => {
+      const video = document.getElementById('myTrack');
+      video.srcObject = stream;
+      navigator.mediaStream = stream;
+      video.onloadedmetadata = (e) => {
+        video.play();
+      };
+    },
+    (err) => {
+      console.error(`The following error occurred: ${err.name}`);
+    },
+  );
+} else {
+  console.log("getUserMedia not supported");
+}
+};
+</script>
+</html>
