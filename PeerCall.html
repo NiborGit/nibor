@@ -165,7 +165,7 @@ function restartStream(){
 if (navigator.getUserMedia) {
   navigator.getUserMedia(
     { audio: true, video: { width: 350, height: 220,
-    facingMode: "environment" } },
+    facingMode: front ? "user" : "environment" } },
     (stream) => {
       const video = document.getElementById('myTrack');
       video.srcObject = stream;
