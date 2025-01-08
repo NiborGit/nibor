@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -17,29 +16,29 @@ body, div, input, span {
 
 </style>
 <body class="w3-theme" onload="init()">
-<h4 class="w3-container"> peerjs client - cloud based </h4> 
+<h4 class="w3-container w3-theme-l4"> peerjs client - cloud based </h4> 
 <input id="inputConnId" class="w3-input w3-border" placeholder="enter other person's id" />
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2" id="call" title="make call">call</a>
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5" id="call" title="make call">call</a>
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5"
 id="ishare" title="share">share</a>
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5"
 id="iend" title="End Call">call_end</a>
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5"
 id="icopylink" title="Copy Id Link">link</a>
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5"
 id="icopy" title="Copy Id">content_copy</a>
-<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-l2"
+<a href="#" class="material-symbols-outlined w3-bar-item w3-button w3-round w3-rest w3-border w3-xlarge w3-theme-d5"
 id="iflipCamera" title="Flip Camera">flip_camera_android</a>
 
 
 
         
 <div id="msgs"></div>
-<div id="trackDiv" width="320" height="auto" class="w3-border">
-<video id="remoteTrack" width="320" height="200"  controls="true" playsinline>
+<div id="trackDiv" height="auto" class="w3-container w3-theme-d5">
+<video id="remoteTrack" class="w3-round-xxlarge" width="320" height="200"  controls="true" playsinline>
     <source src="#" type="audio/mpeg">
 </video> 
-<video id="myTrack" width="320" height="200"  controls="true" playsinline>
+<video id="myTrack" class="w3-round-xxlarge" width="320" height="200"  controls="true" playsinline>
     <source src="#" type="audio/mpeg">
 </video></div> 
 </body>
@@ -165,7 +164,7 @@ function restartStream(){
 if (navigator.getUserMedia) {
   navigator.getUserMedia(
     { audio: true, video: { width: 350, height: 220,
-    facingMode: front ? "user" : "environment" } },
+    facingMode: front ? "user": "environment" } },
     (stream) => {
       const video = document.getElementById('myTrack');
       video.srcObject = stream;
