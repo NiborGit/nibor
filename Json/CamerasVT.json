@@ -3754,6 +3754,398 @@
       "city": null,
       "dotDistrict": null,
       "country": "United States"
+    },
+    {
+      "DT_RowId": "1673",
+      "tooltipUrl": "/tooltip/Cameras/1673?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2281,
+          "cameraSiteId": 1673,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2281",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1673,
+      "sourceId": "56A5FDE0CD2BB17C159EFBB5B49A45AC849AEB2D",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "I-95",
+      "direction": "Southbound",
+      "location": "Maine DOT - I-95 Chester RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-68.60572 45.37609)"
+        }
+      },
+      "linkId1": "1244855023T",
+      "linkId2": null,
+      "created": "2026-01-16T15:26:01.71605+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1674",
+      "tooltipUrl": "/tooltip/Cameras/1674?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2282,
+          "cameraSiteId": 1674,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2282",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1674,
+      "sourceId": "954E3B2E391B059461311CF7E792AB8F43C4EE19",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "I-95",
+      "direction": "Southbound",
+      "location": "Maine DOT - I-95 SB Ludlow RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-67.95653 46.14158)"
+        }
+      },
+      "linkId1": "123112839T",
+      "linkId2": "123112841F",
+      "created": "2026-01-16T15:36:13.4771761+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1675",
+      "tooltipUrl": "/tooltip/Cameras/1675?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2283,
+          "cameraSiteId": 1675,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2283",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1675,
+      "sourceId": "A2D3305262354D2B3CFB9C225AE5A28D4D59F3E3",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "ME-9",
+      "direction": "Eastbound",
+      "location": "Maine DOT - Rt. 9 EB Wesley RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-67.6487 44.96675)"
+        }
+      },
+      "linkId1": "1231904448F",
+      "linkId2": null,
+      "created": "2026-01-16T15:50:02.2222183+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1676",
+      "tooltipUrl": "/tooltip/Cameras/1676?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2284,
+          "cameraSiteId": 1676,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2284",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1676,
+      "sourceId": "A3B6742381174B0D82114DD76BFE2B6ADB3924EB",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "US-1",
+      "direction": "Northbound",
+      "location": "Maine DOT - Rt. 1 NB Waldoboro RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-69.42804 44.1031)"
+        }
+      },
+      "linkId1": "92133799F",
+      "linkId2": null,
+      "created": "2026-01-16T15:51:05.0642027+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1677",
+      "tooltipUrl": "/tooltip/Cameras/1677?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2285,
+          "cameraSiteId": 1677,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2285",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1677,
+      "sourceId": "88142ABF3E01BBB18463E3E6C86AF09BA108FC78",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "US-302",
+      "direction": "Eastbound",
+      "location": "Maine DOT - Rt. 302 EB Fryeburg RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-70.95869 44.02084)"
+        }
+      },
+      "linkId1": "1309956116F",
+      "linkId2": null,
+      "created": "2026-01-16T15:54:09.5961045+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1678",
+      "tooltipUrl": "/tooltip/Cameras/1678?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2286,
+          "cameraSiteId": 1678,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2286",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1678,
+      "sourceId": "27183F76A640CEE5AED87D7BBB39753F4DB4692A",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "ME-4",
+      "direction": "Southbound",
+      "location": "Maine DOT - Rt. 4 SB Sandy River RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-70.61069 44.92177)"
+        }
+      },
+      "linkId1": "1376636865T",
+      "linkId2": null,
+      "created": "2026-01-16T15:57:14.0492184+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
+    },
+    {
+      "DT_RowId": "1679",
+      "tooltipUrl": "/tooltip/Cameras/1679?lang=%7Blang%7D&noCss=true",
+      "agencyLogoEnabled": false,
+      "visible": true,
+      "isDefault": false,
+      "images": [
+        {
+          "id": 2287,
+          "cameraSiteId": 1679,
+          "sortOrder": 0,
+          "imageUrl": "/map/Cctv/2287",
+          "imageType": 1,
+          "refreshRateMs": 10000,
+          "isVideoAuthRequired": false,
+          "videoDisabled": false,
+          "disabled": false,
+          "blocked": false,
+          "language": "en"
+        }
+      ],
+      "id": 1679,
+      "sourceId": "55F2EE100A9368BDC4A3B1930A3E6C3DBFBCE57F",
+      "source": "Maine",
+      "type": null,
+      "areaId": "ME",
+      "area": null,
+      "sortOrder": 0,
+      "roadway": "US-1A",
+      "direction": "Northbound",
+      "location": "Maine DOT - Rt.1A NB Fort Fairfield RWIS",
+      "latLng": {
+        "geography": {
+          "coordinateSystemId": 4326,
+          "wellKnownText": "POINT (-67.86942 46.71197)"
+        }
+      },
+      "linkId1": "90002749F",
+      "linkId2": null,
+      "created": "2026-01-16T15:59:01.1828338+00:00",
+      "lastUpdated": null,
+      "lastEditedBy": null,
+      "defaultCameraSite": false,
+      "nickname": null,
+      "language": "en",
+      "jsonData": {
+
+      },
+      "jsonDataSerialized": null,
+      "region": null,
+      "state": "Maine",
+      "county": null,
+      "city": null,
+      "dotDistrict": null,
+      "country": "United States"
     }
   ]
 }
