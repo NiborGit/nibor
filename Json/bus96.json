@@ -1,13 +1,4 @@
-[
-    {
-        "feed_name": "ccta-vt-us",
-        "route_id": "3168",
-        "route_short_name": "96",
-        "route_long_name": "Franklin County Commuter",
-        "route_color": "6b9968",
-        "route_text_color": "ffffff",
-        "route_sort_order": 39,
-        "simple_00004_geojson": {
+{
             "type": "MultiLineString",
             "coordinates": [
                 [
@@ -7704,5 +7695,3 @@
                 ]
             ]
         }
-    }
-]
