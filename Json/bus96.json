@@ -1,4 +1,6 @@
 {
+  "type": "Feature",
+  "geometry": {
             "type": "MultiLineString",
             "coordinates": [
                 [
@@ -7695,3 +7697,4 @@
                 ]
             ]
         }
+}
