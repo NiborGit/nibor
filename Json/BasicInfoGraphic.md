@@ -13,7 +13,7 @@ flowchart TB
   end
 
   subgraph API[Backend / API Layer]
-    AUTH[Auth + Session\n{OAuth/JWT/Cookies}]
+    AUTH[Auth + Session\nOAuth/JWT/Cookies]
     PROF[Profile Service\nCRUD user profile]
     FORM[Form Service\nValidate + Save inputs]
     SEARCH[Search Service\nQuery builder + ranking]
