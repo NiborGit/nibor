@@ -7,9 +7,9 @@ flowchart TB
   U((User))
 
   subgraph UI[Client / UI]
-    P[Profile Page\n (View + Edit)]
-    F[Form Input\n{Create / Update Records}]
-    S[Search Page\n{Query + Filters}]
+    P[Profile Page\n View and Edit]
+    F[Form Input\n Create / Update Records]
+    S[Search Page\n Query + Filters]
   end
 
   subgraph API[Backend / API Layer]
