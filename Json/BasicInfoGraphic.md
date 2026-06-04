@@ -7,13 +7,13 @@ flowchart TB
   U((User))
 
   subgraph UI[Client / UI]
-    P[Profile Page\n(View + Edit)]
-    F[Form Input\n(Create / Update Records)]
-    S[Search Page\n(Query + Filters)]
+    P[Profile Page\n {View + Edit}]
+    F[Form Input\n{Create / Update Records}]
+    S[Search Page\n{Query + Filters}]
   end
 
   subgraph API[Backend / API Layer]
-    AUTH[Auth + Session\n(OAuth/JWT/Cookies)]
+    AUTH[Auth + Session\n{OAuth/JWT/Cookies}]
     PROF[Profile Service\nCRUD user profile]
     FORM[Form Service\nValidate + Save inputs]
     SEARCH[Search Service\nQuery builder + ranking]
