@@ -8,7 +8,7 @@ flowchart TB
 
   subgraph UI[Client / UI]
     P[Profile Page\n(View + Edit)]
-    F[Form Input स्क्रीन\n(Create / Update Records)]
+    F[Form Input \n(Create / Update Records)]
     S[Search Page\n(Query + Filters)]
   end
 
