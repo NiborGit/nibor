@@ -26,8 +26,8 @@ flowchart TB
   end
 
   subgraph EXT[External Data Imports]
-    SRC1[[External API #1\n(e.g., catalog, partners)]]
-    SRC2[[External API #2\n(e.g., public datasets)]]
+    SRC1[[External API #1\n -e.g., catalog, partners]]
+    SRC2[[External API #2\n -e.g., public datasets]]
     ETL[Import/ETL Job\nSchedule + dedupe + normalize]
   end
 
