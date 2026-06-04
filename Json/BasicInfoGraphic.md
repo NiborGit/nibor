@@ -1,3 +1,4 @@
+```mermaid
 flowchart TB
   %% =========================
   %% BASIC APP INFOGRAPHIC
